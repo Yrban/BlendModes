@@ -16,6 +16,24 @@
 		8B2AC1402707666D0039B4F7 /* BlendingModesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC13F2707666D0039B4F7 /* BlendingModesTests.swift */; };
 		8B2AC14A2707666D0039B4F7 /* BlendingModesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1492707666D0039B4F7 /* BlendingModesUITests.swift */; };
 		8B2AC14C2707666D0039B4F7 /* BlendingModesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC14B2707666D0039B4F7 /* BlendingModesUITestsLaunchTests.swift */; };
+		8B2AC15B270766840039B4F7 /* BlendGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC159270766840039B4F7 /* BlendGroupView.swift */; };
+		8B2AC15D270767360039B4F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC15C270767360039B4F7 /* SettingsView.swift */; };
+		8B2AC15F270767640039B4F7 /* BlendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC15E270767640039B4F7 /* BlendModel.swift */; };
+		8B2AC163270779920039B4F7 /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC162270779920039B4F7 /* ColorExt.swift */; };
+		8B2AC16527079D280039B4F7 /* PartialSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC16427079D270039B4F7 /* PartialSheetViewModifier.swift */; };
+		8B2AC1682707B9DC0039B4F7 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2AC1672707B9DC0039B4F7 /* Collections */; };
+		8B2AC16A2707B9DC0039B4F7 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2AC1692707B9DC0039B4F7 /* DequeModule */; };
+		8B2AC16C2707B9DC0039B4F7 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2AC16B2707B9DC0039B4F7 /* OrderedCollections */; };
+		8B2AC1722708DFF20039B4F7 /* BlendModeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1712708DFF20039B4F7 /* BlendModeExt.swift */; };
+		8B2AC1742708E9650039B4F7 /* BlendModeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1732708E9650039B4F7 /* BlendModeDetail.swift */; };
+		8B2AC1762708E9CC0039B4F7 /* ChooseColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1752708E9CC0039B4F7 /* ChooseColorsView.swift */; };
+		8B2AC1782708F1E10039B4F7 /* AdjustModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1772708F1E10039B4F7 /* AdjustModeView.swift */; };
+		8B4C894B270CDEAE00580080 /* SingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C894A270CDEAE00580080 /* SingleView.swift */; };
+		8B4C896C270D285400580080 /* BlendModeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C896B270D285400580080 /* BlendModeViewModifier.swift */; };
+		8B4C896E270D2AE600580080 /* ColorInvertViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C896D270D2AE600580080 /* ColorInvertViewModifier.swift */; };
+		8B4C8970270D300C00580080 /* CompositingGroupViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C896F270D300C00580080 /* CompositingGroupViewModifier.swift */; };
+		8B4C8994270F604900580080 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C8993270F604900580080 /* SliderView.swift */; };
+		8B4C8996270F79D800580080 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C8995270F79D800580080 /* InformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +66,21 @@
 		8B2AC1452707666D0039B4F7 /* BlendingModesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlendingModesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2AC1492707666D0039B4F7 /* BlendingModesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendingModesUITests.swift; sourceTree = "<group>"; };
 		8B2AC14B2707666D0039B4F7 /* BlendingModesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendingModesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8B2AC159270766840039B4F7 /* BlendGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlendGroupView.swift; sourceTree = "<group>"; };
+		8B2AC15C270767360039B4F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8B2AC15E270767640039B4F7 /* BlendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendModel.swift; sourceTree = "<group>"; };
+		8B2AC162270779920039B4F7 /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		8B2AC16427079D270039B4F7 /* PartialSheetViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialSheetViewModifier.swift; sourceTree = "<group>"; };
+		8B2AC1712708DFF20039B4F7 /* BlendModeExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendModeExt.swift; sourceTree = "<group>"; };
+		8B2AC1732708E9650039B4F7 /* BlendModeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendModeDetail.swift; sourceTree = "<group>"; };
+		8B2AC1752708E9CC0039B4F7 /* ChooseColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseColorsView.swift; sourceTree = "<group>"; };
+		8B2AC1772708F1E10039B4F7 /* AdjustModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustModeView.swift; sourceTree = "<group>"; };
+		8B4C894A270CDEAE00580080 /* SingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleView.swift; sourceTree = "<group>"; };
+		8B4C896B270D285400580080 /* BlendModeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendModeViewModifier.swift; sourceTree = "<group>"; };
+		8B4C896D270D2AE600580080 /* ColorInvertViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInvertViewModifier.swift; sourceTree = "<group>"; };
+		8B4C896F270D300C00580080 /* CompositingGroupViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositingGroupViewModifier.swift; sourceTree = "<group>"; };
+		8B4C8993270F604900580080 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		8B4C8995270F79D800580080 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +88,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2AC1682707B9DC0039B4F7 /* Collections in Frameworks */,
+				8B2AC16A2707B9DC0039B4F7 /* DequeModule in Frameworks */,
+				8B2AC16C2707B9DC0039B4F7 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +136,21 @@
 			children = (
 				8B2AC1292707666A0039B4F7 /* BlendingModesApp.swift */,
 				8B2AC12B2707666A0039B4F7 /* ContentView.swift */,
+				8B2AC1732708E9650039B4F7 /* BlendModeDetail.swift */,
+				8B2AC159270766840039B4F7 /* BlendGroupView.swift */,
+				8B4C894A270CDEAE00580080 /* SingleView.swift */,
+				8B2AC15E270767640039B4F7 /* BlendModel.swift */,
+				8B2AC15C270767360039B4F7 /* SettingsView.swift */,
+				8B2AC1752708E9CC0039B4F7 /* ChooseColorsView.swift */,
+				8B4C8995270F79D800580080 /* InformationView.swift */,
+				8B2AC1772708F1E10039B4F7 /* AdjustModeView.swift */,
+				8B4C8993270F604900580080 /* SliderView.swift */,
+				8B2AC162270779920039B4F7 /* ColorExt.swift */,
+				8B2AC1712708DFF20039B4F7 /* BlendModeExt.swift */,
+				8B4C896B270D285400580080 /* BlendModeViewModifier.swift */,
+				8B4C896D270D2AE600580080 /* ColorInvertViewModifier.swift */,
+				8B4C896F270D300C00580080 /* CompositingGroupViewModifier.swift */,
+				8B2AC16427079D270039B4F7 /* PartialSheetViewModifier.swift */,
 				8B2AC12D2707666D0039B4F7 /* Assets.xcassets */,
 				8B2AC1322707666D0039B4F7 /* Persistence.swift */,
 				8B2AC1342707666D0039B4F7 /* BlendingModes.xcdatamodeld */,
@@ -149,6 +200,11 @@
 			dependencies = (
 			);
 			name = BlendingModes;
+			packageProductDependencies = (
+				8B2AC1672707B9DC0039B4F7 /* Collections */,
+				8B2AC1692707B9DC0039B4F7 /* DequeModule */,
+				8B2AC16B2707B9DC0039B4F7 /* OrderedCollections */,
+			);
 			productName = BlendingModes;
 			productReference = 8B2AC1262707666A0039B4F7 /* BlendingModes.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +277,9 @@
 				Base,
 			);
 			mainGroup = 8B2AC11D2707666A0039B4F7;
+			packageReferences = (
+				8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 8B2AC1272707666A0039B4F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,9 +322,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2AC15D270767360039B4F7 /* SettingsView.swift in Sources */,
+				8B2AC1782708F1E10039B4F7 /* AdjustModeView.swift in Sources */,
+				8B4C896E270D2AE600580080 /* ColorInvertViewModifier.swift in Sources */,
+				8B4C8994270F604900580080 /* SliderView.swift in Sources */,
+				8B2AC16527079D280039B4F7 /* PartialSheetViewModifier.swift in Sources */,
+				8B4C8970270D300C00580080 /* CompositingGroupViewModifier.swift in Sources */,
+				8B2AC163270779920039B4F7 /* ColorExt.swift in Sources */,
+				8B2AC1762708E9CC0039B4F7 /* ChooseColorsView.swift in Sources */,
+				8B2AC15F270767640039B4F7 /* BlendModel.swift in Sources */,
+				8B2AC1742708E9650039B4F7 /* BlendModeDetail.swift in Sources */,
 				8B2AC1332707666D0039B4F7 /* Persistence.swift in Sources */,
+				8B2AC1722708DFF20039B4F7 /* BlendModeExt.swift in Sources */,
+				8B4C896C270D285400580080 /* BlendModeViewModifier.swift in Sources */,
 				8B2AC1362707666D0039B4F7 /* BlendingModes.xcdatamodeld in Sources */,
+				8B2AC15B270766840039B4F7 /* BlendGroupView.swift in Sources */,
 				8B2AC12C2707666A0039B4F7 /* ContentView.swift in Sources */,
+				8B4C894B270CDEAE00580080 /* SingleView.swift in Sources */,
+				8B4C8996270F79D800580080 /* InformationView.swift in Sources */,
 				8B2AC12A2707666A0039B4F7 /* BlendingModesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +509,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,7 +539,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,7 +562,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KR424649J7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -513,7 +587,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KR424649J7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,6 +689,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B2AC1672707B9DC0039B4F7 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		8B2AC1692707B9DC0039B4F7 /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+		8B2AC16B2707B9DC0039B4F7 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8B2AC1342707666D0039B4F7 /* BlendingModes.xcdatamodeld */ = {

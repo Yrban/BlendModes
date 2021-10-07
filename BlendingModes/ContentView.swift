@@ -10,76 +10,92 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    
+    @ObservedObject var blendModel = BlendModel.shared
+    @State var sheetSize = SheetSize.short
+    
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+            VStack {
+                SettingsView()
+                    .partialSheet(sheetSize)
+                
+                List {
+                    ForEach(BlendMode.allCases, id: \.self) { mode in
+                        NavigationLink {
+                            BlendModeDetail(mode: mode)
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    VStack {
+                                        HStack {
+                                            Text("Blend Mode:")
+                                            Spacer()
+                                        }
+                                        HStack {
+                                            Spacer()
+                                            Text(mode.description)
+                                        }
+                                    }
+                                    VStack {
+                                        HStack {
+                                            Text("Background:")
+                                            Spacer()
+                                        }
+                                        HStack {
+                                            Spacer()
+                                            Text(UIColor(blendModel.background).accessibilityName)
+                                        }
+                                    }
+                                }
+                                .layoutPriority(1)
+                                
+                                Spacer()
+                                
+                                GeometryReader { geometry in
+                                    BlendGroupView(mode: mode, geometry: geometry)
+                                }
+                                .frame(idealWidth: 100, idealHeight: 100)
+                                .fixedSize()
+                                .padding(.leading)
+                            }
+                        }
                     }
                 }
-                .onDelete(perform: deleteItems)
+                .shadow(color: .gray, radius: 20, x: 0, y: 0)
+                
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                Button {
+                    withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
+                        switchSheet()
                     }
+                } label: {
+                    Image(systemName: "map")
+                        .rotationEffect(.degrees(90))
                 }
             }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            .navigationTitle("Blend Modes")
+            .navigationBarTitleDisplayMode(.inline)
+            .onReceive(blendModel.$compositingMode) { _ in
+                withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
+                    sheetSize = .short
+                }
             }
         }
     }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+    private func switchSheet() {
+        switch sheetSize {
+        case .short:
+            sheetSize = .long
+        case .long:
+            sheetSize = .short
+        default:
+            break
         }
     }
+    
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
