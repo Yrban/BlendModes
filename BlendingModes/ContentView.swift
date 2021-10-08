@@ -24,46 +24,14 @@ struct ContentView: View {
                         NavigationLink {
                             BlendModeDetail(mode: mode)
                         } label: {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    VStack {
-                                        HStack {
-                                            Text("Blend Mode:")
-                                            Spacer()
-                                        }
-                                        HStack {
-                                            Spacer()
-                                            Text(mode.description)
-                                        }
-                                    }
-                                    VStack {
-                                        HStack {
-                                            Text("Background:")
-                                            Spacer()
-                                        }
-                                        HStack {
-                                            Spacer()
-                                            Text(UIColor(blendModel.background).accessibilityName)
-                                        }
-                                    }
-                                }
-                                .layoutPriority(1)
-                                
-                                Spacer()
-                                
-                                GeometryReader { geometry in
-                                    BlendGroupView(mode: mode, geometry: geometry)
-                                }
-                                .frame(idealWidth: 100, idealHeight: 100)
-                                .fixedSize()
-                                .padding(.leading)
-                            }
+                            blendModeLabel(mode: mode)
+                            .accessibilityElement(children: .ignore)
+                            .accessibility(label: Text("Select blend mode \(mode.description)"))
                         }
                     }
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .shadow(color: Color(uiColor: .darkGray), radius: 30, x: 0, y: 15)
-                
             }
             .toolbar {
                 Button {
@@ -73,6 +41,7 @@ struct ContentView: View {
                 } label: {
                     Image(systemName: "map")
                         .rotationEffect(.degrees(90))
+                        .accessibility(label: Text("View all controls."))
                 }
             }
             .navigationTitle("Blend Modes")
@@ -85,6 +54,53 @@ struct ContentView: View {
         }
         .glow(with: blendModel.background)
     }
+    
+    func blendModeLabel(mode: BlendMode) -> some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 8) {
+                blendLabel(mode: mode)
+                backgroundLabel
+            }
+            .layoutPriority(1)
+            
+            Spacer()
+            
+            GeometryReader { geometry in
+                BlendGroupView(mode: mode, geometry: geometry)
+            }
+            .frame(idealWidth: 100, idealHeight: 100)
+            .fixedSize()
+            .padding(.leading)
+        }
+
+    }
+    
+    func blendLabel(mode: BlendMode) -> some View {
+        VStack {
+            HStack {
+                Text("Blend Mode:")
+                Spacer()
+            }
+            HStack {
+                Spacer()
+                Text(mode.description)
+            }
+        }
+    }
+    
+    var backgroundLabel: some View {
+        VStack {
+            HStack {
+                Text("Background:")
+                Spacer()
+            }
+            HStack {
+                Spacer()
+                Text(UIColor(blendModel.background).accessibilityName)
+            }
+        }
+    }
+    
     private func switchSheet() {
         switch sheetSize {
         case .short:
@@ -95,7 +111,6 @@ struct ContentView: View {
             break
         }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

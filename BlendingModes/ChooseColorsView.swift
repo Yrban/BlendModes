@@ -14,6 +14,9 @@ struct ChooseColorsView: View {
         
         ForEach(blendModel.colors.indices, id: \.self) { index in
             ColorPicker("Choose a color:", selection: $blendModel.colors[index].color, supportsOpacity: false)
+                .accessibilityElement(children: .ignore)
+                .accessibility(label: Text("Change the \((index + 1).ordinalFormatter()) color from \(UIColor(blendModel.colors[index].color).accessibilityName)"))
+                .deleteDisabled(blendModel.colors.count == 1)
         }
         .onDelete(perform: { indexSet in blendModel.colors.remove(atOffsets:indexSet) })
         
@@ -29,8 +32,11 @@ struct ChooseColorsView: View {
             }
         }
         .disabled(blendModel.colors.count > 4)
+        .accessibility(label: Text("Add New Color"))
         
         ColorPicker("Choose a background color:", selection: $blendModel.background, supportsOpacity: false)
+            .accessibilityElement(children: .ignore)
+            .accessibility(label: Text("Change the background color from \(UIColor(blendModel.background).accessibilityName)"))
     }
 }
 

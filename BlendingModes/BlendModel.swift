@@ -11,7 +11,7 @@ import Collections
 class BlendModel: ObservableObject {
     
     public static var shared = BlendModel()
-        
+    
     @Published var colors: [ColorInfo] = []
     @Published var background: Color
     @Published var colorInvert: Bool
@@ -47,19 +47,21 @@ struct ColorInfo: Identifiable, Hashable {
 }
 
 extension BlendModel {
-
+    
     convenience init(colorsQty: Int) {
         self.init()
-        if colors.count > colorsQty {
-            let count = colors.count - colorsQty
+        let qty = colorsQty.clamped(from: 1, to: 5)
+        if colors.count > qty {
+            let count = colors.count - qty
             for _ in 1...count {
                 colors.removeLast()
             }
-        } else if colors.count < colorsQty {
-            let count = colorsQty - colors.count
+        } else if colors.count < qty {
+            let count = qty - colors.count
             for _ in 1...count {
-            addColor(color: Color.random)
-        }
+                addColor(color: Color.random)
+            }
         }
     }
 }
+

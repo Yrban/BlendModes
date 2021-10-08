@@ -44,8 +44,10 @@ struct BlendModeDetail: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 HStack(spacing: 0) {
                     Image(systemName: "chevron.backward")
-                    Text("Mode")
+                    Text("Modes")
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibility(label: Text("Back to blend modes"))
                 .foregroundColor(.blue)
                 .onTapGesture {
                     presentationMode.wrappedValue.dismiss()

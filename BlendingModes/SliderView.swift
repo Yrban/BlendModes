@@ -15,11 +15,17 @@ struct SliderView: View {
     var body: some View {
         VStack {
             Text(title)
-        HStack {
-            Image(systemName: "minus")
-            Slider(value: $value, in: 0...1)
-            Image(systemName: "plus")
-        }
+                .accessibility(hidden: true)
+            HStack {
+                Image(systemName: "minus")
+                    .accessibility(hidden: true)
+                Slider(value: $value, in: 0...1)
+                    .accessibilityLabel(Text("\(title) slider"))
+                    .accessibility(value: Text("at \(value.formatted(.percent))"))
+                Image(systemName: "plus")
+                    .accessibility(hidden: true)
+            }
+            .tint(.blue)
         }
     }
 }

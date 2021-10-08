@@ -22,7 +22,7 @@ struct PartialSheet: ViewModifier {
     private func sheetHeight() -> CGFloat {
         switch sheetSize {
         case .short:
-            return UIScreen.main.bounds.height / 5
+            return UIScreen.main.bounds.height / 5.5
         case .long:
             return UIScreen.main.bounds.height / 1.8
         case .detail:

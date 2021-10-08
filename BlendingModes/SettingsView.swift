@@ -17,18 +17,21 @@ struct SettingsView: View {
         Form {
             Section(header: Text("Please choose your modes:")) {
                 AdjustModeView()
-        }
+            }
+            .accessibilityRemoveTraits(.isHeader)
+
             Section(header: Text("Please set your colors:")) {
                 ChooseColorsView()
             }
+            .accessibilityRemoveTraits(.isHeader)
         }
+        
         .onReceive(blendModel.objectWillChange) { _ in
             withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
-            count = blendModel.colors.count
-        }
+                count = blendModel.colors.count
+            }
         }
     }
-    
 }
 
 struct SettingsView_Previews: PreviewProvider {
