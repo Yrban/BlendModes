@@ -9,7 +9,6 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     
     @ObservedObject var blendModel = BlendModel.shared
     @State var sheetSize = SheetSize.short
@@ -62,7 +61,8 @@ struct ContentView: View {
                         }
                     }
                 }
-                .shadow(color: .gray, radius: 20, x: 0, y: 0)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .shadow(color: Color(uiColor: .darkGray), radius: 30, x: 0, y: 15)
                 
             }
             .toolbar {
@@ -83,6 +83,7 @@ struct ContentView: View {
                 }
             }
         }
+        .glow(with: blendModel.background)
     }
     private func switchSheet() {
         switch sheetSize {
@@ -99,6 +100,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }

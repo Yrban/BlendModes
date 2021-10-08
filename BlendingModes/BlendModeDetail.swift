@@ -8,28 +8,48 @@
 import SwiftUI
 
 struct BlendModeDetail: View {
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var blendModel = BlendModel.shared
     let mode: BlendMode
     
     var body: some View {
         VStack {
-            List {
+            VStack {
                 ChooseColorsView()
             }
-            .listStyle(.plain)
-            .partialSheet(.detail)
+            .padding()
+            .background(Color(uiColor: .systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 15))
             
             GeometryReader { geometry in
                 BlendGroupView(mode: mode, geometry: geometry)
             }
-            
-            AdjustModeView()
-                .padding(.horizontal)
+            VStack {
+                AdjustModeView()
+            }
+            .padding()
+            .background(Color(uiColor: .systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 15))
         }
+        .glow(with: blendModel.background)
         .padding(.bottom)
         .navigationTitle(Text(mode.description))
+        .navigationBarBackButtonHidden(true)
         .toolbar {
-            NavigationLink(destination: InformationView(mode: mode)) {
-                Image(systemName: "info.circle")
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: InformationView(mode: mode)) {
+                    Image(systemName: "info.circle")
+                }
+            }
+            ToolbarItem(placement: .navigationBarLeading) {
+                HStack(spacing: 0) {
+                    Image(systemName: "chevron.backward")
+                    Text("Mode")
+                }
+                .foregroundColor(.blue)
+                .onTapGesture {
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         }
     }

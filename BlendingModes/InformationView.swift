@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InformationView: View {
-    
+    @ObservedObject var blendModel = BlendModel.shared
     var mode: BlendMode = .color
     
     var body: some View {
@@ -25,6 +25,8 @@ struct InformationView: View {
                     }
                 }
             }
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .glow(with: blendModel.background)
         }
     }
 }

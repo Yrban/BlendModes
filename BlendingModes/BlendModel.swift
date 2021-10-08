@@ -20,15 +20,13 @@ class BlendModel: ObservableObject {
     @Published var opacity: Double
     
     init() {
-        background = .white
+        background = .gray
         colorInvert = false
         compositingMode = false
         blur = 0
         opacity = 1
         
         addColor(color: .red)
-        addColor(color: .yellow)
-        addColor(color: .blue)
     }
     
     func addColor(color: Color) {

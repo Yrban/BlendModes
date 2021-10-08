@@ -18,7 +18,12 @@ struct BlendGroupView: View {
         self.mode = mode
         self.geometry = geometry
         let minDimension = Int(min(geometry.size.width, geometry.size.height))
-        self.offset = Int(minDimension / (BlendModel.shared.colors.count * 10))
+        if BlendModel.shared.colors.count > 1 {
+            self.offset = Int(minDimension / ((BlendModel.shared.colors.count) * 10))
+        } else {
+            self.offset = 0
+        }
+
     }
     
     var body: some View {
