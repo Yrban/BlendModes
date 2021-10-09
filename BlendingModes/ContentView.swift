@@ -44,13 +44,15 @@ struct ContentView: View {
                         .accessibility(label: Text("View all controls."))
                 }
             }
-            .navigationTitle("Blend Modes")
+            .navigationTitle("Modes")
             .navigationBarTitleDisplayMode(.inline)
             .onReceive(blendModel.$compositingMode) { _ in
                 withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
                     sheetSize = .short
                 }
             }
+            
+            BlendModeDetail(mode: .normal)
         }
         .glow(with: blendModel.background)
     }

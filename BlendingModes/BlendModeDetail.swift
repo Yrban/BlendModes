@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BlendModeDetail: View {
-    @Environment(\.presentationMode) var presentationMode
+
     @ObservedObject var blendModel = BlendModel.shared
     let mode: BlendMode
     
@@ -34,23 +34,10 @@ struct BlendModeDetail: View {
         .glow(with: blendModel.background)
         .padding(.bottom)
         .navigationTitle(Text(mode.description))
-        .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(destination: InformationView(mode: mode)) {
                     Image(systemName: "info.circle")
-                }
-            }
-            ToolbarItem(placement: .navigationBarLeading) {
-                HStack(spacing: 0) {
-                    Image(systemName: "chevron.backward")
-                    Text("Modes")
-                }
-                .accessibilityElement(children: .ignore)
-                .accessibility(label: Text("Back to blend modes"))
-                .foregroundColor(.blue)
-                .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
                 }
             }
         }
