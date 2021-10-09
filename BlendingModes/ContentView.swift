@@ -18,20 +18,33 @@ struct ContentView: View {
             VStack {
                 SettingsView()
                     .partialSheet(sheetSize)
-                
-                List {
+
+                Form {
                     ForEach(BlendMode.allCases, id: \.self) { mode in
                         NavigationLink {
                             BlendModeDetail(mode: mode)
                         } label: {
                             blendModeLabel(mode: mode)
-                            .accessibilityElement(children: .ignore)
-                            .accessibility(label: Text("Select blend mode \(mode.description)"))
+                                .accessibilityElement(children: .ignore)
+                                .accessibility(label: Text("Select blend mode \(mode.description)"))
                         }
                     }
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 15))
-                .shadow(color: Color(uiColor: .darkGray), radius: 30, x: 0, y: 15)
+                // Faking a shadow as putting a shadow on the view causes it to expand wider than the main list window on iPad
+                .background(
+                    ZStack {
+                        Color.gray
+                            .opacity(0.1)
+                            .offset(x: 0, y: -10)
+                        Color.gray
+                            .opacity(0.2)
+                            .offset(x: 0, y: -7)
+                        Color.gray
+                            .opacity(0.3)
+                            .offset(x: 0, y: -3)
+                    }
+                )
+                .ignoresSafeArea()
             }
             .toolbar {
                 Button {
@@ -51,7 +64,6 @@ struct ContentView: View {
                     sheetSize = .short
                 }
             }
-            
             BlendModeDetail(mode: .normal)
         }
         .glow(with: blendModel.background)
@@ -63,18 +75,18 @@ struct ContentView: View {
                 blendLabel(mode: mode)
                 backgroundLabel
             }
-            .layoutPriority(1)
+            //            .layoutPriority(1)
             
             Spacer()
             
             GeometryReader { geometry in
                 BlendGroupView(mode: mode, geometry: geometry)
             }
-            .frame(idealWidth: 100, idealHeight: 100)
+            .frame(idealWidth: 75, idealHeight: 75)
             .fixedSize()
             .padding(.leading)
         }
-
+        
     }
     
     func blendLabel(mode: BlendMode) -> some View {
