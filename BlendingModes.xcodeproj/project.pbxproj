@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8B20B32E2713703E002008F3 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B32D2713703E002008F3 /* HelpView.swift */; };
+		8B20B33027138863002008F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B20B32F27138863002008F3 /* Assets.xcassets */; };
 		8B2AC12A2707666A0039B4F7 /* BlendingModesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1292707666A0039B4F7 /* BlendingModesApp.swift */; };
 		8B2AC12C2707666A0039B4F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC12B2707666A0039B4F7 /* ContentView.swift */; };
-		8B2AC12E2707666D0039B4F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2AC12D2707666D0039B4F7 /* Assets.xcassets */; };
 		8B2AC1312707666D0039B4F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2AC1302707666D0039B4F7 /* Preview Assets.xcassets */; };
 		8B2AC15B270766840039B4F7 /* BlendGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC159270766840039B4F7 /* BlendGroupView.swift */; };
 		8B2AC15D270767360039B4F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC15C270767360039B4F7 /* SettingsView.swift */; };
@@ -37,10 +37,10 @@
 
 /* Begin PBXFileReference section */
 		8B20B32D2713703E002008F3 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		8B20B32F27138863002008F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B2AC1262707666A0039B4F7 /* Blend Modes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blend Modes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2AC1292707666A0039B4F7 /* BlendingModesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendingModesApp.swift; sourceTree = "<group>"; };
 		8B2AC12B2707666A0039B4F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		8B2AC12D2707666D0039B4F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B2AC1302707666D0039B4F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B2AC159270766840039B4F7 /* BlendGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlendGroupView.swift; sourceTree = "<group>"; };
 		8B2AC15C270767360039B4F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -107,9 +107,9 @@
 				8B4C8995270F79D800580080 /* InformationView.swift */,
 				8B4C8993270F604900580080 /* SliderView.swift */,
 				8B2AC15E270767640039B4F7 /* BlendModel.swift */,
+				8B20B32F27138863002008F3 /* Assets.xcassets */,
 				8BA9404E2710BD4200886927 /* Extensions */,
 				8BA9404F2710BD5400886927 /* View Modifiers */,
-				8B2AC12D2707666D0039B4F7 /* Assets.xcassets */,
 				8B2AC12F2707666D0039B4F7 /* Preview Content */,
 			);
 			path = BlendingModes;
@@ -212,8 +212,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B20B33027138863002008F3 /* Assets.xcassets in Resources */,
 				8B2AC1312707666D0039B4F7 /* Preview Assets.xcassets in Resources */,
-				8B2AC12E2707666D0039B4F7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
