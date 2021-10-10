@@ -25,12 +25,32 @@ struct InformationView: View {
                         value.scrollTo(mode.anchor, anchor: .top)
                     }
                 }
+                VStack {
+                    Text(".colorInvert()")
+                        .accessibility(hidden: true)
+                    Text(colorInvert)
+                }
+                VStack {
+                    Text(".compositingGroup()()")
+                        .accessibility(hidden: true)
+                    Text(colorInvert)
+                }
+
             }
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .glow(with: blendModel.background)
             .navigationTitle(Text("Blend Mode Info"))
         }
     }
+    
+    let colorInvert = """
+The colorInvert() modifier inverts all of the colors in a view so that each color displays as its complementary color. For example, blue converts to yellow, and white converts to black.
+"""
+    let compositing = """
+A compositing group makes compositing effects in this view’s ancestor views, such as opacity and the blend mode, take effect before this view is rendered.
+Use compositingGroup() to apply effects to a parent view before applying effects to this view. In Blend Modes, the circles are all in the compositing group, and the background is not. This allows you to isolate the circles from the background, or not. This allows you to further explore the different blend modes.
+
+"""
 }
 
 struct InformationView_Previews: PreviewProvider {

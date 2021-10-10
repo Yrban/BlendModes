@@ -12,7 +12,7 @@ class BlendModel: ObservableObject {
     
     public static var shared = BlendModel()
     
-    @Published var colors: [ColorInfo] = []
+    @Published var colors: [Color] = []
     @Published var background: Color
     @Published var colorInvert: Bool
     @Published var compositingMode: Bool
@@ -30,20 +30,12 @@ class BlendModel: ObservableObject {
     }
     
     func addColor(color: Color) {
-        colors.append(ColorInfo(color: color))
+        colors.append(color)
     }
     
     func changeColor(_ color:Color, at index: Int) {
-        colors[index].color = color
+        colors[index] = color
     }
-}
-
-struct ColorInfo: Identifiable, Hashable {
-    var id = UUID()
-    var color: Color = .clear
-    var blend = false
-    var invert = false
-    var compositing = false
 }
 
 extension BlendModel {

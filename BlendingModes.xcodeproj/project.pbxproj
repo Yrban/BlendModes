@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B20B32E2713703E002008F3 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B32D2713703E002008F3 /* HelpView.swift */; };
 		8B2AC12A2707666A0039B4F7 /* BlendingModesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1292707666A0039B4F7 /* BlendingModesApp.swift */; };
 		8B2AC12C2707666A0039B4F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC12B2707666A0039B4F7 /* ContentView.swift */; };
 		8B2AC12E2707666D0039B4F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2AC12D2707666D0039B4F7 /* Assets.xcassets */; };
 		8B2AC1312707666D0039B4F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2AC1302707666D0039B4F7 /* Preview Assets.xcassets */; };
-		8B2AC1402707666D0039B4F7 /* BlendingModesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC13F2707666D0039B4F7 /* BlendingModesTests.swift */; };
-		8B2AC14A2707666D0039B4F7 /* BlendingModesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1492707666D0039B4F7 /* BlendingModesUITests.swift */; };
-		8B2AC14C2707666D0039B4F7 /* BlendingModesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC14B2707666D0039B4F7 /* BlendingModesUITestsLaunchTests.swift */; };
 		8B2AC15B270766840039B4F7 /* BlendGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC159270766840039B4F7 /* BlendGroupView.swift */; };
 		8B2AC15D270767360039B4F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC15C270767360039B4F7 /* SettingsView.swift */; };
 		8B2AC15F270767640039B4F7 /* BlendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC15E270767640039B4F7 /* BlendModel.swift */; };
@@ -37,34 +35,13 @@
 		8BA9406F2710EB4100886927 /* ComparableExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9406E2710EB4100886927 /* ComparableExt.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		8B2AC13C2707666D0039B4F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B2AC11E2707666A0039B4F7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8B2AC1252707666A0039B4F7;
-			remoteInfo = BlendingModes;
-		};
-		8B2AC1462707666D0039B4F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B2AC11E2707666A0039B4F7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8B2AC1252707666A0039B4F7;
-			remoteInfo = BlendingModes;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		8B20B32D2713703E002008F3 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		8B2AC1262707666A0039B4F7 /* Blend Modes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blend Modes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2AC1292707666A0039B4F7 /* BlendingModesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendingModesApp.swift; sourceTree = "<group>"; };
 		8B2AC12B2707666A0039B4F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8B2AC12D2707666D0039B4F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B2AC1302707666D0039B4F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8B2AC13B2707666D0039B4F7 /* BlendingModesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlendingModesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B2AC13F2707666D0039B4F7 /* BlendingModesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendingModesTests.swift; sourceTree = "<group>"; };
-		8B2AC1452707666D0039B4F7 /* BlendingModesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlendingModesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B2AC1492707666D0039B4F7 /* BlendingModesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendingModesUITests.swift; sourceTree = "<group>"; };
-		8B2AC14B2707666D0039B4F7 /* BlendingModesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendingModesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8B2AC159270766840039B4F7 /* BlendGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlendGroupView.swift; sourceTree = "<group>"; };
 		8B2AC15C270767360039B4F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8B2AC15E270767640039B4F7 /* BlendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendModel.swift; sourceTree = "<group>"; };
@@ -96,20 +73,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8B2AC1382707666D0039B4F7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8B2AC1422707666D0039B4F7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -117,8 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				8B2AC1282707666A0039B4F7 /* BlendingModes */,
-				8B2AC13E2707666D0039B4F7 /* BlendingModesTests */,
-				8B2AC1482707666D0039B4F7 /* BlendingModesUITests */,
 				8B2AC1272707666A0039B4F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,8 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				8B2AC1262707666A0039B4F7 /* Blend Modes.app */,
-				8B2AC13B2707666D0039B4F7 /* BlendingModesTests.xctest */,
-				8B2AC1452707666D0039B4F7 /* BlendingModesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,6 +97,7 @@
 			children = (
 				8B2AC1292707666A0039B4F7 /* BlendingModesApp.swift */,
 				8B2AC12B2707666A0039B4F7 /* ContentView.swift */,
+				8B20B32D2713703E002008F3 /* HelpView.swift */,
 				8B2AC1732708E9650039B4F7 /* BlendModeDetail.swift */,
 				8B2AC159270766840039B4F7 /* BlendGroupView.swift */,
 				8B4C894A270CDEAE00580080 /* SingleView.swift */,
@@ -161,23 +121,6 @@
 				8B2AC1302707666D0039B4F7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		8B2AC13E2707666D0039B4F7 /* BlendingModesTests */ = {
-			isa = PBXGroup;
-			children = (
-				8B2AC13F2707666D0039B4F7 /* BlendingModesTests.swift */,
-			);
-			path = BlendingModesTests;
-			sourceTree = "<group>";
-		};
-		8B2AC1482707666D0039B4F7 /* BlendingModesUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8B2AC1492707666D0039B4F7 /* BlendingModesUITests.swift */,
-				8B2AC14B2707666D0039B4F7 /* BlendingModesUITestsLaunchTests.swift */,
-			);
-			path = BlendingModesUITests;
 			sourceTree = "<group>";
 		};
 		8BA9404E2710BD4200886927 /* Extensions */ = {
@@ -228,42 +171,6 @@
 			productReference = 8B2AC1262707666A0039B4F7 /* Blend Modes.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8B2AC13A2707666D0039B4F7 /* BlendingModesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8B2AC1522707666D0039B4F7 /* Build configuration list for PBXNativeTarget "BlendingModesTests" */;
-			buildPhases = (
-				8B2AC1372707666D0039B4F7 /* Sources */,
-				8B2AC1382707666D0039B4F7 /* Frameworks */,
-				8B2AC1392707666D0039B4F7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8B2AC13D2707666D0039B4F7 /* PBXTargetDependency */,
-			);
-			name = BlendingModesTests;
-			productName = BlendingModesTests;
-			productReference = 8B2AC13B2707666D0039B4F7 /* BlendingModesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		8B2AC1442707666D0039B4F7 /* BlendingModesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8B2AC1552707666D0039B4F7 /* Build configuration list for PBXNativeTarget "BlendingModesUITests" */;
-			buildPhases = (
-				8B2AC1412707666D0039B4F7 /* Sources */,
-				8B2AC1422707666D0039B4F7 /* Frameworks */,
-				8B2AC1432707666D0039B4F7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8B2AC1472707666D0039B4F7 /* PBXTargetDependency */,
-			);
-			name = BlendingModesUITests;
-			productName = BlendingModesUITests;
-			productReference = 8B2AC1452707666D0039B4F7 /* BlendingModesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -276,14 +183,6 @@
 				TargetAttributes = {
 					8B2AC1252707666A0039B4F7 = {
 						CreatedOnToolsVersion = 13.0;
-					};
-					8B2AC13A2707666D0039B4F7 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 8B2AC1252707666A0039B4F7;
-					};
-					8B2AC1442707666D0039B4F7 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 8B2AC1252707666A0039B4F7;
 					};
 				};
 			};
@@ -304,8 +203,6 @@
 			projectRoot = "";
 			targets = (
 				8B2AC1252707666A0039B4F7 /* BlendingModes */,
-				8B2AC13A2707666D0039B4F7 /* BlendingModesTests */,
-				8B2AC1442707666D0039B4F7 /* BlendingModesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -317,20 +214,6 @@
 			files = (
 				8B2AC1312707666D0039B4F7 /* Preview Assets.xcassets in Resources */,
 				8B2AC12E2707666D0039B4F7 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8B2AC1392707666D0039B4F7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8B2AC1432707666D0039B4F7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +234,7 @@
 				8B2AC1762708E9CC0039B4F7 /* ChooseColorsView.swift in Sources */,
 				8B2AC15F270767640039B4F7 /* BlendModel.swift in Sources */,
 				8B2AC1742708E9650039B4F7 /* BlendModeDetail.swift in Sources */,
+				8B20B32E2713703E002008F3 /* HelpView.swift in Sources */,
 				8BA9404D2710ABB200886927 /* IntExtension.swift in Sources */,
 				8B2AC1722708DFF20039B4F7 /* BlendModeExt.swift in Sources */,
 				8B4C896C270D285400580080 /* BlendModeViewModifier.swift in Sources */,
@@ -364,37 +248,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8B2AC1372707666D0039B4F7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8B2AC1402707666D0039B4F7 /* BlendingModesTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8B2AC1412707666D0039B4F7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8B2AC14C2707666D0039B4F7 /* BlendingModesUITestsLaunchTests.swift in Sources */,
-				8B2AC14A2707666D0039B4F7 /* BlendingModesUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8B2AC13D2707666D0039B4F7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8B2AC1252707666A0039B4F7 /* BlendingModes */;
-			targetProxy = 8B2AC13C2707666D0039B4F7 /* PBXContainerItemProxy */;
-		};
-		8B2AC1472707666D0039B4F7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8B2AC1252707666A0039B4F7 /* BlendingModes */;
-			targetProxy = 8B2AC1462707666D0039B4F7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8B2AC14D2707666D0039B4F7 /* Debug */ = {
@@ -575,102 +429,6 @@
 			};
 			name = Release;
 		};
-		8B2AC1532707666D0039B4F7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KR424649J7;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendingModesTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlendingModes.app/BlendingModes";
-			};
-			name = Debug;
-		};
-		8B2AC1542707666D0039B4F7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KR424649J7;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendingModesTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlendingModes.app/BlendingModes";
-			};
-			name = Release;
-		};
-		8B2AC1562707666D0039B4F7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KR424649J7;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendingModesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BlendingModes;
-			};
-			name = Debug;
-		};
-		8B2AC1572707666D0039B4F7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KR424649J7;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendingModesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BlendingModes;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -688,24 +446,6 @@
 			buildConfigurations = (
 				8B2AC1502707666D0039B4F7 /* Debug */,
 				8B2AC1512707666D0039B4F7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8B2AC1522707666D0039B4F7 /* Build configuration list for PBXNativeTarget "BlendingModesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8B2AC1532707666D0039B4F7 /* Debug */,
-				8B2AC1542707666D0039B4F7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8B2AC1552707666D0039B4F7 /* Build configuration list for PBXNativeTarget "BlendingModesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8B2AC1562707666D0039B4F7 /* Debug */,
-				8B2AC1572707666D0039B4F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

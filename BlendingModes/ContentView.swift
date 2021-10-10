@@ -47,14 +47,22 @@ struct ContentView: View {
                 .ignoresSafeArea()
             }
             .toolbar {
-                Button {
-                    withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
-                        switchSheet()
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
+                            switchSheet()
+                        }
+                    } label: {
+                        Image(systemName: "map")
+                            .rotationEffect(.degrees(90))
+                            .accessibility(label: Text("View all controls."))
                     }
-                } label: {
-                    Image(systemName: "map")
-                        .rotationEffect(.degrees(90))
-                        .accessibility(label: Text("View all controls."))
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: HelpView()) {
+                        Image(systemName: "questionmark.circle")
+                            .accessibility(label: Text("Help"))
+                    }
                 }
             }
             .navigationTitle("Modes")

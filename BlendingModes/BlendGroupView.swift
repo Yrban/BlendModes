@@ -46,9 +46,9 @@ struct BlendGroupView: View {
     }
     
     var blendedView: some View {
-        ForEach(Array(zip(blendModel.colors.indices, blendModel.colors)), id: \.1) { index, colorInfo in
-            SingleView(color: colorInfo.color, offset: offset, count: blendModel.colors.count, index: index)
-                .accessibilityLabel(Text(" the \((index + 1).ordinalFormatter()) circle of \(blendModel.colors.count), colored \(UIColor(colorInfo.color).accessibilityName) with the blend mode of \(mode.description) applied"))
+        ForEach(Array(zip(blendModel.colors.indices, blendModel.colors)), id: \.1) { index, color in
+            SingleView(color: color, offset: offset, count: blendModel.colors.count, index: index)
+                .accessibilityLabel(Text(" the \((index + 1).ordinalFormatter()) circle of \(blendModel.colors.count), colored \(UIColor(color).accessibilityName) with the blend mode of \(mode.description) applied"))
         }
     }
     
