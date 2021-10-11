@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		8B20B32E2713703E002008F3 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B32D2713703E002008F3 /* HelpView.swift */; };
 		8B20B33027138863002008F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B20B32F27138863002008F3 /* Assets.xcassets */; };
+		8B20B3BC2713B64C002008F3 /* EULAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B3BB2713B64C002008F3 /* EULAView.swift */; };
+		8B20B3BE2713B654002008F3 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B3BD2713B654002008F3 /* PrivacyPolicyView.swift */; };
+		8B20B3C12713B6B9002008F3 /* URLWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B3C02713B6B9002008F3 /* URLWebView.swift */; };
+		8B20B3C52713B6E7002008F3 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B3C22713B6E7002008F3 /* KeychainItemAccessibility.swift */; };
+		8B20B3C62713B6E7002008F3 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B3C32713B6E7002008F3 /* Keychain.swift */; };
+		8B20B3C72713B6E7002008F3 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B3C42713B6E7002008F3 /* KeychainWrapper.swift */; };
+		8B20B3CC2713B94E002008F3 /* PrivacyEULATabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B3CB2713B94E002008F3 /* PrivacyEULATabBar.swift */; };
 		8B2AC12A2707666A0039B4F7 /* BlendingModesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1292707666A0039B4F7 /* BlendingModesApp.swift */; };
 		8B2AC12C2707666A0039B4F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC12B2707666A0039B4F7 /* ContentView.swift */; };
 		8B2AC1312707666D0039B4F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2AC1302707666D0039B4F7 /* Preview Assets.xcassets */; };
@@ -17,9 +24,6 @@
 		8B2AC15F270767640039B4F7 /* BlendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC15E270767640039B4F7 /* BlendModel.swift */; };
 		8B2AC163270779920039B4F7 /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC162270779920039B4F7 /* ColorExt.swift */; };
 		8B2AC16527079D280039B4F7 /* PartialSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC16427079D270039B4F7 /* PartialSheetViewModifier.swift */; };
-		8B2AC1682707B9DC0039B4F7 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2AC1672707B9DC0039B4F7 /* Collections */; };
-		8B2AC16A2707B9DC0039B4F7 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2AC1692707B9DC0039B4F7 /* DequeModule */; };
-		8B2AC16C2707B9DC0039B4F7 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2AC16B2707B9DC0039B4F7 /* OrderedCollections */; };
 		8B2AC1722708DFF20039B4F7 /* BlendModeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1712708DFF20039B4F7 /* BlendModeExt.swift */; };
 		8B2AC1742708E9650039B4F7 /* BlendModeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1732708E9650039B4F7 /* BlendModeDetail.swift */; };
 		8B2AC1762708E9CC0039B4F7 /* ChooseColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AC1752708E9CC0039B4F7 /* ChooseColorsView.swift */; };
@@ -38,6 +42,13 @@
 /* Begin PBXFileReference section */
 		8B20B32D2713703E002008F3 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		8B20B32F27138863002008F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B20B3BB2713B64C002008F3 /* EULAView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EULAView.swift; sourceTree = "<group>"; };
+		8B20B3BD2713B654002008F3 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		8B20B3C02713B6B9002008F3 /* URLWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLWebView.swift; sourceTree = "<group>"; };
+		8B20B3C22713B6E7002008F3 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		8B20B3C32713B6E7002008F3 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		8B20B3C42713B6E7002008F3 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		8B20B3CB2713B94E002008F3 /* PrivacyEULATabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyEULATabBar.swift; sourceTree = "<group>"; };
 		8B2AC1262707666A0039B4F7 /* Blend Modes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blend Modes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2AC1292707666A0039B4F7 /* BlendingModesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendingModesApp.swift; sourceTree = "<group>"; };
 		8B2AC12B2707666A0039B4F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,15 +78,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B2AC1682707B9DC0039B4F7 /* Collections in Frameworks */,
-				8B2AC16A2707B9DC0039B4F7 /* DequeModule in Frameworks */,
-				8B2AC16C2707B9DC0039B4F7 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B20B3BF2713B65C002008F3 /* Legal */ = {
+			isa = PBXGroup;
+			children = (
+				8B20B3BB2713B64C002008F3 /* EULAView.swift */,
+				8B20B3BD2713B654002008F3 /* PrivacyPolicyView.swift */,
+				8B20B3C02713B6B9002008F3 /* URLWebView.swift */,
+			);
+			path = Legal;
+			sourceTree = "<group>";
+		};
+		8B20B3C82713B6ED002008F3 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				8B20B3C32713B6E7002008F3 /* Keychain.swift */,
+				8B20B3C22713B6E7002008F3 /* KeychainItemAccessibility.swift */,
+				8B20B3C42713B6E7002008F3 /* KeychainWrapper.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
 		8B2AC11D2707666A0039B4F7 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +135,9 @@
 				8B4C8995270F79D800580080 /* InformationView.swift */,
 				8B4C8993270F604900580080 /* SliderView.swift */,
 				8B2AC15E270767640039B4F7 /* BlendModel.swift */,
+				8B20B3CB2713B94E002008F3 /* PrivacyEULATabBar.swift */,
+				8B20B3C82713B6ED002008F3 /* Keychain */,
+				8B20B3BF2713B65C002008F3 /* Legal */,
 				8B20B32F27138863002008F3 /* Assets.xcassets */,
 				8BA9404E2710BD4200886927 /* Extensions */,
 				8BA9404F2710BD5400886927 /* View Modifiers */,
@@ -163,9 +194,6 @@
 			);
 			name = BlendingModes;
 			packageProductDependencies = (
-				8B2AC1672707B9DC0039B4F7 /* Collections */,
-				8B2AC1692707B9DC0039B4F7 /* DequeModule */,
-				8B2AC16B2707B9DC0039B4F7 /* OrderedCollections */,
 			);
 			productName = BlendingModes;
 			productReference = 8B2AC1262707666A0039B4F7 /* Blend Modes.app */;
@@ -196,7 +224,6 @@
 			);
 			mainGroup = 8B2AC11D2707666A0039B4F7;
 			packageReferences = (
-				8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 8B2AC1272707666A0039B4F7 /* Products */;
 			projectDirPath = "";
@@ -227,15 +254,21 @@
 				8B2AC15D270767360039B4F7 /* SettingsView.swift in Sources */,
 				8B2AC1782708F1E10039B4F7 /* AdjustModeView.swift in Sources */,
 				8B4C896E270D2AE600580080 /* ColorInvertViewModifier.swift in Sources */,
+				8B20B3CC2713B94E002008F3 /* PrivacyEULATabBar.swift in Sources */,
 				8B4C8994270F604900580080 /* SliderView.swift in Sources */,
 				8B2AC16527079D280039B4F7 /* PartialSheetViewModifier.swift in Sources */,
 				8B4C8970270D300C00580080 /* CompositingGroupViewModifier.swift in Sources */,
 				8B2AC163270779920039B4F7 /* ColorExt.swift in Sources */,
+				8B20B3C12713B6B9002008F3 /* URLWebView.swift in Sources */,
+				8B20B3BC2713B64C002008F3 /* EULAView.swift in Sources */,
+				8B20B3C72713B6E7002008F3 /* KeychainWrapper.swift in Sources */,
 				8B2AC1762708E9CC0039B4F7 /* ChooseColorsView.swift in Sources */,
 				8B2AC15F270767640039B4F7 /* BlendModel.swift in Sources */,
 				8B2AC1742708E9650039B4F7 /* BlendModeDetail.swift in Sources */,
+				8B20B3BE2713B654002008F3 /* PrivacyPolicyView.swift in Sources */,
 				8B20B32E2713703E002008F3 /* HelpView.swift in Sources */,
 				8BA9404D2710ABB200886927 /* IntExtension.swift in Sources */,
+				8B20B3C62713B6E7002008F3 /* Keychain.swift in Sources */,
 				8B2AC1722708DFF20039B4F7 /* BlendModeExt.swift in Sources */,
 				8B4C896C270D285400580080 /* BlendModeViewModifier.swift in Sources */,
 				8BA9406F2710EB4100886927 /* ComparableExt.swift in Sources */,
@@ -244,6 +277,7 @@
 				8B4C894B270CDEAE00580080 /* SingleView.swift in Sources */,
 				8B8EA7A5270FC6140047DDE4 /* GlowViewModifier.swift in Sources */,
 				8B4C8996270F79D800580080 /* InformationView.swift in Sources */,
+				8B20B3C52713B6E7002008F3 /* KeychainItemAccessibility.swift in Sources */,
 				8B2AC12A2707666A0039B4F7 /* BlendingModesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,35 +485,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-collections.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8B2AC1672707B9DC0039B4F7 /* Collections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = Collections;
-		};
-		8B2AC1692707B9DC0039B4F7 /* DequeModule */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = DequeModule;
-		};
-		8B2AC16B2707B9DC0039B4F7 /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8B2AC1662707B9DC0039B4F7 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8B2AC11E2707666A0039B4F7 /* Project object */;
 }
