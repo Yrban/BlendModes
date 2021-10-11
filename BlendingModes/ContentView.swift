@@ -81,6 +81,7 @@ struct ContentView: View {
                 }
                 BlendModeDetail(mode: .normal)
             } else {
+                EmptyView()
                 PrivacyEULATabBar()
             }
             

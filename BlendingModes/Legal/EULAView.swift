@@ -19,44 +19,44 @@ struct EULAView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                VStack {
-                    Text("Please accept the EULA, and acknowledge the Privacy Policy to continue.")
-                        .font(.headline)
-                    
-                    UrlWebView(urlToDisplay: self.url)
-                    
-                    if !(self.keychain.EULAAccepted && self.keychain.privacyAccepted) {
-                        HStack {
-                            Button(action: {
-                                self.keychain.toggleEULA()
-                            }) {
-                                if self.keychain.EULAAccepted {
-                                    Image(systemName: "checkmark.square")
-                                        .font(.largeTitle)
-                                } else {
-                                    Image(systemName: "square")
-                                        .font(.largeTitle)
-                                }
-                                Text(" I Have Read and Understand The\nEnd User License Agreement")
-                                    .font(.caption)
+                Text("Please accept the EULA, and acknowledge the Privacy Policy to continue.")
+                    .font(.headline)
+                
+                UrlWebView(urlToDisplay: self.url)
+                
+                if !(self.keychain.EULAAccepted && self.keychain.privacyAccepted) {
+                    HStack {
+                        Button(action: {
+                            self.keychain.toggleEULA()
+                        }) {
+                            if self.keychain.EULAAccepted {
+                                Image(systemName: "checkmark.square")
+                                    .font(.largeTitle)
+                            } else {
+                                Image(systemName: "square")
+                                    .font(.largeTitle)
                             }
+                            Text(" I Have Read and Understand The\nEnd User License Agreement")
+                                .font(.caption)
                         }
-                        .contentShape(Rectangle())
-                        .frame(height: (geometry.size.height * 0.08))
-                        .padding(.top, 5)
-                        .padding(.bottom)
                     }
+                    .contentShape(Rectangle())
+                    .frame(height: (geometry.size.height * 0.08))
+                    .padding(.top, 5)
+                    .padding(.bottom)
                 }
-                .padding(.horizontal)
-                .navigationTitle("EULA")
-                .navigationBarTitleDisplayMode(.inline)
             }
+            .padding(.horizontal)
+            .navigationTitle("Blend Modes")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
 struct EULAView_Previews: PreviewProvider {
     static var previews: some View {
-        EULAView()
+        NavigationView {
+            EULAView()
+        }
     }
 }

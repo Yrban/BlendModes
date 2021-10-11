@@ -25,7 +25,7 @@ struct PrivacyEULATabBar: View {
                     Text("Privacy Policy")}
                 .tag(1)
         }
-        .animation(.easeInOut)
+        .animation( .easeInOut, value: selection)
         .transition(.slide)
     }
 }

@@ -22,34 +22,37 @@ struct PrivacyPolicyView: View {
                 
                 UrlWebView(urlToDisplay: self.url)
                 
-                    HStack {
-                        Button(action: {
-                            self.keychain.togglePrivacy()
-                        }) {
-                            if self.keychain.privacyAccepted {
-                                Image(systemName: "checkmark.square")
-                                    .font(.largeTitle)
-                            } else {
-                                Image(systemName: "square")
-                                    .font(.largeTitle)
-                            }
-                            Text(" I Have Read and Understand The Privacy Policy")
-                                .font(.caption)
+                HStack {
+                    Button(action: {
+                        self.keychain.togglePrivacy()
+                    }) {
+                        if self.keychain.privacyAccepted {
+                            Image(systemName: "checkmark.square")
+                                .font(.largeTitle)
+                        } else {
+                            Image(systemName: "square")
+                                .font(.largeTitle)
                         }
+                        Text(" I Have Read and Understand The Privacy Policy")
+                            .font(.caption)
                     }
-                    .contentShape(Rectangle())
-                    .frame(height: (geometry.size.height * 0.08))
-                    .padding(.top, 5)
-                    .padding(.bottom)
+                }
+                .contentShape(Rectangle())
+                .frame(height: (geometry.size.height * 0.08))
+                .padding(.top, 5)
+                .padding(.bottom)
             }
             .padding(.horizontal)
-            .navigationTitle("Privacy")
+            .navigationTitle("Blend Modes")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
-struct PrivacyPolicyView_Previews: PreviewProvider {
-    static var previews: some View {
-        PrivacyPolicyView()
+
+    struct PrivacyPolicyView_Previews: PreviewProvider {
+        static var previews: some View {
+            NavigationView {
+                PrivacyPolicyView()
+            }
+        }
     }
-}
