@@ -14,7 +14,7 @@ struct BlendModeDetail: View {
     
     var body: some View {
         VStack {
-            VStack {
+            Form {
                 ChooseColorsView()
             }
             .padding()

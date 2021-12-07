@@ -10,8 +10,8 @@ import CoreData
 
 struct ContentView: View {
     
-    @ObservedObject var keychain = Keychain.shared
-    @ObservedObject var blendModel = BlendModel.shared
+    @StateObject var keychain = Keychain.shared
+    @StateObject var blendModel = BlendModel.shared
     @State private var sheetSize = SheetSize.short
     @State private var privAndEULA: Bool
     
@@ -25,7 +25,6 @@ struct ContentView: View {
                 VStack {
                     SettingsView()
                         .partialSheet(sheetSize)
-                    
                     Form {
                         ForEach(BlendMode.allCases, id: \.self) { mode in
                             NavigationLink {
@@ -81,8 +80,12 @@ struct ContentView: View {
                 }
                 BlendModeDetail(mode: .normal)
             } else {
-                EmptyView()
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    EmptyView()
                 PrivacyEULATabBar()
+                } else {
+                    PrivacyEULATabBar()
+                }
             }
             
         }

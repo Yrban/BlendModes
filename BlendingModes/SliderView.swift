@@ -15,6 +15,7 @@ struct SliderView: View {
     var body: some View {
         VStack {
             Text(title)
+            Text("\((value * 100).formatted(.number.precision(.fractionLength(2))))%")
                 .accessibility(hidden: true)
             HStack {
                 Image(systemName: "minus")
