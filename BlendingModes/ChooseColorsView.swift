@@ -14,13 +14,16 @@ struct ChooseColorsView: View {
         
         ForEach(blendModel.colors.indices, id: \.self) { index in
             VStack {
-            ColorPicker("Choose a color:", selection: $blendModel.colors[index], supportsOpacity: false)
-                .accessibilityElement(children: .ignore)
-                .accessibility(label: Text("Change the \((index + 1).ordinalFormatter()) color from \(UIColor(blendModel.colors[index]).accessibilityName)"))
-                .deleteDisabled(blendModel.colors.count == 1)
-            Text(blendModel.colors[index].componentText())
+                ColorPicker("Choose a color:", selection: $blendModel.colors[index], supportsOpacity: false)
+                    .accessibilityElement(children: .ignore)
+                    .accessibility(label: Text("Change the \((index + 1).ordinalFormatter()) color from \(UIColor(blendModel.colors[index]).accessibilityName)"))
+                    .deleteDisabled(blendModel.colors.count == 1)
+                Text(blendModel.colors[index].componentText())
                     .fixedSize()
             }
+        }
+        .onDelete { indexSet in
+            blendModel.colors.remove(atOffsets: indexSet)
         }
         
         Button {
