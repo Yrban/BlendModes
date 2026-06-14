@@ -1,79 +1,131 @@
-//
-//  BlendGroupView.swift
-//
-//  Created by Developer on 10/1/21.
-//
-
 import SwiftUI
 
 struct BlendGroupView: View {
-    
-    @ObservedObject var blendModel = BlendModel.shared
+    @Environment(BlendModel.self) private var blendModel
     let mode: BlendMode
-    let geometry: GeometryProxy
-    let offset: Int
-    @State private var selection: Int? = nil
-    
-    init(mode: BlendMode, geometry: GeometryProxy) {
-        self.mode = mode
-        self.geometry = geometry
-        let minDimension = Int(min(geometry.size.width, geometry.size.height))
-        if BlendModel.shared.colors.count > 1 {
-            self.offset = Int(minDimension / ((BlendModel.shared.colors.count) * 10))
-        } else {
-            self.offset = 0
-        }
-    }
-    
+
     var body: some View {
-        
-        ZStack {
+        GeometryReader { geo in
+            let minDim = min(geo.size.width, geo.size.height)
+            let count = blendModel.colors.count
+            let offset = count > 1 ? Int(minDim) / (count * 10) : 0
+
             blendModel.background
-                .edgesIgnoringSafeArea(.all)
-            
+
+            canvasContent(minDim: minDim, offset: offset, count: count)
+                .position(x: geo.size.width / 2, y: geo.size.height / 2)
+        }
+    }
+
+    @ViewBuilder
+    private func canvasContent(minDim: CGFloat, offset: Int, count: Int) -> some View {
+        if blendModel.demoMode == .circles {
+            circlesCanvas(offset: offset, count: count)
+                .frame(width: minDim * 0.7, height: minDim * 0.7)
+        } else if blendModel.demoMode == .images {
+            imagesCanvas()
+                .frame(width: minDim, height: minDim)
+        } else {
+            textCanvas(size: minDim)
+                .frame(width: minDim, height: minDim)
+        }
+    }
+
+    // MARK: - Circles
+
+    @ViewBuilder
+    private func circlesCanvas(offset: Int, count: Int) -> some View {
+        ZStack {
             ZStack {
-                blendedView
-                    .blendMode(mode)
-                    .colorInvert(enabled: blendModel.colorInvert)
-                    .compositingGroup(enabled: blendModel.compositingMode)
-                    .blur(radius: blendModel.blur * 20)
-                    .opacity(blendModel.opacity)
-                
-                overCircleView
+                ForEach(Array(zip(blendModel.colors.indices, blendModel.colors)), id: \.1) { index, color in
+                    SingleView(color: color, offset: offset, count: count, index: index)
+                        .accessibilityLabel("Circle \(index + 1) of \(count), blend mode: \(mode.description)")
+                }
             }
-            .frame(width: (min(geometry.size.height, geometry.size.width) * 0.7), alignment: .center)
+            .blendMode(mode)
+            .colorInvert(enabled: blendModel.colorInvert)
+            .compositingGroup(enabled: blendModel.compositingMode)
+            .blur(radius: blendModel.blur * 20)
+            .opacity(blendModel.opacity)
+
+            // Stroke outlines are not blended so they stay visible
+            ForEach(blendModel.colors.indices, id: \.self) { index in
+                Circle()
+                    .strokeBorder(.black, lineWidth: 2)
+                    .offset(x: CGFloat(offset * count), y: CGFloat(offset * count))
+                    .rotationEffect(.degrees(360.0 / Double(max(count, 1)) * Double(index)))
+            }
         }
     }
-    
-    var blendedView: some View {
-        ForEach(Array(zip(blendModel.colors.indices, blendModel.colors)), id: \.1) { index, color in
-            SingleView(color: color, offset: offset, count: blendModel.colors.count, index: index)
-                .accessibilityLabel(Text(" the \((index + 1).ordinalFormatter()) circle of \(blendModel.colors.count), colored \(UIColor(color).accessibilityName) with the blend mode of \(mode.description) applied"))
+
+    // MARK: - Images
+
+    @ViewBuilder
+    private func imagesCanvas() -> some View {
+        // Base layer
+        if let data = blendModel.bottomImageData,
+           let uiImage = UIImage(data: data) {
+            Image(uiImage: uiImage)
+                .resizable()
+                .scaledToFit()
+        } else {
+            imagePlaceholder(label: "Base Image", icon: "photo")
         }
-    }
-    
-    var overCircleView: some View {
-        ForEach(blendModel.colors.indices, id: \.self) { index in
-            Circle()
-                .strokeBorder(Color.black, lineWidth: 2)
-                .offset(x: CGFloat(offset * blendModel.colors.count), y: CGFloat(offset * blendModel.colors.count))
-                .rotationEffect(.degrees(360.0 / Double(blendModel.colors.count) * Double(index)))
+
+        // Blend layer
+        ZStack {
+            if let data = blendModel.topImageData,
+               let uiImage = UIImage(data: data) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                imagePlaceholder(label: "Blend Image", icon: "photo.on.rectangle")
+            }
         }
+        .blendMode(mode)
+        .colorInvert(enabled: blendModel.colorInvert)
+        .compositingGroup(enabled: blendModel.compositingMode)
+        .blur(radius: blendModel.blur * 20)
+        .opacity(blendModel.opacity)
     }
-    
+
+    private func imagePlaceholder(label: String, icon: String) -> some View {
+        RoundedRectangle(cornerRadius: 12)
+            .fill(.secondary.opacity(0.15))
+            .overlay {
+                VStack(spacing: 8) {
+                    Image(systemName: icon)
+                        .font(.title2)
+                    Text(label)
+                        .font(.caption)
+                }
+                .foregroundStyle(.secondary)
+            }
+    }
+
+    // MARK: - Text
+
+    @ViewBuilder
+    private func textCanvas(size: CGFloat) -> some View {
+        ZStack {
+            Text(blendModel.demoText.isEmpty ? "Blend" : blendModel.demoText)
+                .font(.system(size: blendModel.fontSize))
+                .foregroundStyle(blendModel.textColor)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+                .padding(size * 0.05)
+        }
+        .blendMode(mode)
+        .colorInvert(enabled: blendModel.colorInvert)
+        .compositingGroup(enabled: blendModel.compositingMode)
+        .blur(radius: blendModel.blur * 20)
+        .opacity(blendModel.opacity)
+    }
 }
 
-struct BlendModeView_Previews: PreviewProvider {
-    static var previews: some View {
-        BlendModePreview()
-    }
-}
-
-struct BlendModePreview: View {
-    @State var blendModel = BlendModel(colorsQty: 4)
-    var body: some View {
-        GeometryReader { geometry in
-            BlendGroupView(mode: .normal, geometry: geometry)
-        }
-    }
+#Preview {
+    BlendGroupView(mode: .multiply)
+        .frame(width: 300, height: 300)
+        .environment(BlendModel(colors: [.red, .blue, .green]))
 }

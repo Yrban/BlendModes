@@ -1,18 +1,13 @@
-//
-//  BlendingModesApp.swift
-//  BlendingModes
-//
-//  Created by Developer on 10/1/21.
-//
-
 import SwiftUI
 
 @main
 struct BlendingModesApp: App {
+    @State private var blendModel = BlendModel()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(blendModel)
         }
     }
 }

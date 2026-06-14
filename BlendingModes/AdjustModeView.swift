@@ -1,39 +1,30 @@
-//
-//  AdjustModeView.swift
-//  BlendingModes
-//
-//  Created by Developer on 10/2/21.
-//
-
 import SwiftUI
 
 struct AdjustModeView: View {
-    
-    @ObservedObject var blendModel = BlendModel.shared
-    
-    
+    @Environment(BlendModel.self) private var blendModel
+
     var body: some View {
-        Toggle(("Color Invert"), isOn: $blendModel.colorInvert)
-            .accessibility(label: Text("color invert"))
+        @Bindable var model = blendModel
+
+        Toggle("Color Invert", isOn: $model.colorInvert)
+            .accessibilityLabel("color invert")
             .accessibilityRemoveTraits(.isButton)
-            .accessibility(value: Text(blendModel.colorInvert ? "is on" : "is off"))
-        
-        Toggle("Compositing Mode", isOn: $blendModel.compositingMode)
-            .accessibility(label: Text("compositing mode"))
-            .accessibility(value: Text(blendModel.compositingMode ? "is on" : "is off"))
+            .accessibilityValue(blendModel.colorInvert ? "is on" : "is off")
+
+        Toggle("Compositing Mode", isOn: $model.compositingMode)
+            .accessibilityLabel("compositing mode")
+            .accessibilityValue(blendModel.compositingMode ? "is on" : "is off")
             .accessibilityRemoveTraits(.isButton)
-        
-        SliderView(value: $blendModel.opacity, title: "Opacity")
-        SliderView(value: $blendModel.blur, title: "Blur")
+
+        SliderView(value: $model.opacity, title: "Opacity")
+        SliderView(value: $model.blur, title: "Blur")
     }
-    
 }
 
-struct ToggleModeView_Previews: PreviewProvider {
-    static var previews: some View {
-        List {
-            AdjustModeView()
-        }
-        .listStyle(.plain)
+#Preview {
+    List {
+        AdjustModeView()
     }
+    .listStyle(.plain)
+    .environment(BlendModel())
 }

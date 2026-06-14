@@ -1,54 +1,43 @@
-//
-//  HelpView.swift
-//  BlendingModes
-//
-//  Created by Developer on 10/10/21.
-//
-
 import SwiftUI
 
 struct HelpView: View {
-    
-    let url:URL = URL(string: "https://github.com/Yrban/BlendingModes")!
-    
+    @Environment(\.openURL) private var openURL
+
     var body: some View {
-        ScrollView {
-            Text(helpText)
-            Button(action: {
-                    UIApplication.shared.open(self.url) })
-            {
-                    Text("github.com/Yrban/BlendingModes")
+        List {
+            Section {
+                Text(helpText)
+                    .fixedSize(horizontal: false, vertical: true)
+                Button("github.com/Yrban/BlendingModes") {
+                    if let url = URL(string: "https://github.com/Yrban/BlendingModes") {
+                        openURL(url)
+                    }
+                }
             }
         }
-        .padding()
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Help")
-        
     }
-    
-    let helpText = """
-Blend Modes is a simple application to assist iOS developers using SwiftUI and UIKit to explore blends with or without compositing, color inverts, blurs and opacity changes. For those of us not trained in digital art, understanding a .blendMode() and what it will look like on screen is not intuitive. You will find the color interacting in unexpected ways. A complete explanation is provided for each blend mode.
 
-When you start on an iPhone you will see the "Mode" view. This view is made up of the "Settings" view at the top, and the "Selection" view below. The selection view allows you to choose between the different blend modes, and shows you a small preview of what it looks like with the current selections.
+    private let helpText = """
+    Blend Modes is an application to help iOS and macOS developers using SwiftUI explore blend modes with or without compositing, color inverts, blurs, and opacity changes.
 
-You should see "Color Invert" and "Compositing Mode" initially in the "Mode" view. The colorInvert() modifier inverts all of the colors in a view so that each color displays as its complementary color. For example, blue converts to yellow, and white converts to black.
+    Understanding .blendMode() and what it looks like on screen is not intuitive. You will find colors interacting in unexpected ways. A complete explanation is provided for each blend mode.
 
-A compositing group makes compositing effects in this view’s ancestor views, such as opacity and the blend mode, take effect before this view is rendered.
+    Select a blend mode from the list to see a live preview. Tap the info (ⓘ) button on any mode's detail view for a full written description.
 
-Use compositingGroup() to apply effects to a parent view before applying effects to this view. In Blend Modes, the circles are all in the compositing group, and the background is not. This allows you to isolate the circles from the background, or not. This allows you to further explore the different blend modes.
-
-Clicking on the accordion fold button will slide the "Selection" view down revealing more of the view underneath. This will reveal the "Opacity" and "Blur" sliders. Below these are the "ColorPickers" and "Add New Color" button. You can have up to five different colors plus the background color.
-
-Clicking on a particular blend mode will bring up that blend mode's detail view. This view will also allow you to perform all of the adjustments of the Settings view, and will show you the effect with this particular blend mode. Please note, this is an app wide adjustment and it will affect the other blend modes.
-
-The complete project is at:
-"""
+    Controls available in each blend mode's detail view:
+    • Color Invert — inverts all colors so each displays as its complementary color (blue → yellow, white → black).
+    • Compositing Mode — isolates the circles from the background, so blend and opacity effects apply before compositing with the background.
+    • Opacity — adjusts the overall transparency of the layer group.
+    • Blur — applies a Gaussian blur to the layer group.
+    • Colors — add up to 5 colored circles. Swipe a row left to delete it.
+    • Background — choose the background color shown behind the layers.
+    """
 }
 
-struct HelpView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            HelpView()
-        }
+#Preview {
+    NavigationStack {
+        HelpView()
     }
 }

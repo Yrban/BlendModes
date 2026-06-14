@@ -1,58 +1,68 @@
-//
-//  ChooseColorsView.swift
-//  BlendingModes
-//
-//  Created by Developer on 10/2/21.
-//
-
 import SwiftUI
 
 struct ChooseColorsView: View {
-    
-    @ObservedObject var blendModel = BlendModel.shared
+    @Environment(BlendModel.self) private var blendModel
+
     var body: some View {
-        
-        ForEach(blendModel.colors.indices, id: \.self) { index in
+        @Bindable var model = blendModel
+
+        ForEach(model.colors.indices, id: \.self) { index in
             VStack {
-                ColorPicker("Choose a color:", selection: $blendModel.colors[index], supportsOpacity: false)
+                ColorPicker("Choose a color:", selection: $model.colors[index], supportsOpacity: false)
                     .accessibilityElement(children: .ignore)
-                    .accessibility(label: Text("Change the \((index + 1).ordinalFormatter()) color from \(UIColor(blendModel.colors[index]).accessibilityName)"))
-                    .deleteDisabled(blendModel.colors.count == 1)
-                Text(blendModel.colors[index].componentText())
+                    .accessibilityLabel(colorPickerLabel(index: index))
+                    .deleteDisabled(model.colors.count == 1)
+                Text(model.colors[index].componentText())
                     .fixedSize()
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
         }
         .onDelete { indexSet in
-            blendModel.colors.remove(atOffsets: indexSet)
+            model.colors.remove(atOffsets: indexSet)
         }
-        
+
         Button {
             withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
-                blendModel.addColor(color: .random)
+                model.addColor()
             }
         } label: {
-            Label {
-                Text("Add New Color")
-            } icon: {
-                Image(systemName: "plus.circle")
-            }
+            Label("Add New Color", systemImage: "plus.circle")
         }
-        .disabled(blendModel.colors.count > 4)
-        .accessibility(label: Text("Add New Color"))
-        
+        .disabled(model.colors.count > 4)
+        .accessibilityLabel("Add New Color")
+
         VStack {
-            ColorPicker("Choose a background color:", selection: $blendModel.background, supportsOpacity: false)
+            ColorPicker("Background color:", selection: $model.background, supportsOpacity: false)
                 .accessibilityElement(children: .ignore)
-                .accessibility(label: Text("Change the background color from \(UIColor(blendModel.background).accessibilityName)"))
-            Text(blendModel.background.componentText())
+                .accessibilityLabel(backgroundPickerLabel)
+            Text(model.background.componentText())
                 .fixedSize()
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
+    }
+
+    private func colorPickerLabel(index: Int) -> String {
+        "Change the \((index + 1).ordinalFormatter()) color from \(colorName(for: blendModel.colors[index]))"
+    }
+
+    private var backgroundPickerLabel: String {
+        "Change the background color from \(colorName(for: blendModel.background))"
+    }
+
+    private func colorName(for color: Color) -> String {
+        #if canImport(UIKit)
+        return UIColor(color).accessibilityName
+        #else
+        return color.description
+        #endif
     }
 }
 
-
-struct ChooseColorsView_Previews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    List {
         ChooseColorsView()
     }
+    .environment(BlendModel(colors: [.red, .blue]))
 }

@@ -1,54 +1,44 @@
-//
-//  SettingsView.swift
-//  BlendingModes
-//
-//  Created by Developer on 10/1/21.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
-    
-    @ObservedObject var blendModel = BlendModel.shared
-    @State var count: Int = BlendModel.shared.colors.count
-    @State var colorSelection: Color = .clear
-    
+    @Environment(BlendModel.self) private var blendModel
+
     var body: some View {
+        @Bindable var model = blendModel
+
         Form {
-            Section(header: Text("Please choose your modes:")) {
+            Section("Canvas Type") {
+                Picker("Canvas", selection: $model.demoMode) {
+                    ForEach(DemoMode.allCases, id: \.self) { m in
+                        Label(m.rawValue, systemImage: m.systemImage).tag(m)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+
+            Section("Modes") {
                 AdjustModeView()
             }
-            .accessibilityRemoveTraits(.isHeader)
 
-            Section(header: Text("Please set your colors:")) {
+            Section("Colors") {
                 ChooseColorsView()
             }
-            .accessibilityRemoveTraits(.isHeader)
-        }
-        
-        .onReceive(blendModel.objectWillChange) { _ in
-            withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
-                count = blendModel.colors.count
+
+            Section("Legal") {
+                NavigationLink("EULA") {
+                    EULAView()
+                }
+                NavigationLink("Privacy Policy") {
+                    PrivacyPolicyView()
+                }
             }
         }
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForEach(ColorScheme.allCases, id: \.self) { scheme in
-            NavigationView {
-                SettingsView()
-                    .preferredColorScheme(scheme)
-            }
-        }
+#Preview {
+    NavigationStack {
+        SettingsView()
+            .environment(BlendModel())
     }
-}
-
-extension UUID: Identifiable {
-    public var id: UUID {
-        return self
-    }
-    
-    
 }

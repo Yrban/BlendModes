@@ -1,125 +1,91 @@
-//
-//  ContentView.swift
-//  BlendingModes
-//
-//  Created by Developer on 10/1/21.
-//
-
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    
-    @StateObject var keychain = Keychain.shared
-    @StateObject var blendModel = BlendModel.shared
-    @State private var sheetSize = SheetSize.short
-    @State private var privAndEULA: Bool
-    
-    init() {
-        _privAndEULA = State(initialValue: Keychain.shared.EULAAccepted && Keychain.shared.privacyAccepted)
-    }
-    
+    @Environment(BlendModel.self) private var blendModel
+    @State private var selectedMode: BlendMode? = .normal
+    @State private var showHelp = false
+    @State private var showSettings = false
+
     var body: some View {
-        NavigationView {
-            if privAndEULA {
-                VStack {
-                    SettingsView()
-                        .partialSheet(sheetSize)
-                    Form {
-                        ForEach(BlendMode.allCases, id: \.self) { mode in
-                            NavigationLink {
-                                BlendModeDetail(mode: mode)
-                            } label: {
-                                blendModeLabel(mode: mode)
-                                    .accessibilityElement(children: .ignore)
-                                    .accessibility(label: Text("Select blend mode \(mode.description)"))
-                            }
-                        }
-                    }
-                    // Faking a shadow as putting a shadow on the view causes it to expand wider than the main list window on iPad
-                    .background(
-                        ZStack {
-                            Color.gray
-                                .opacity(0.1)
-                                .offset(x: 0, y: -10)
-                            Color.gray
-                                .opacity(0.2)
-                                .offset(x: 0, y: -7)
-                            Color.gray
-                                .opacity(0.3)
-                                .offset(x: 0, y: -3)
-                        }
-                    )
-                    .ignoresSafeArea()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
-                                switchSheet()
-                            }
-                        } label: {
-                            Image(systemName: "map")
-                                .rotationEffect(.degrees(90))
-                                .accessibility(label: Text("View all controls."))
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationLink(destination: HelpView()) {
-                            Image(systemName: "questionmark.circle")
-                                .accessibility(label: Text("Help"))
-                        }
+        NavigationSplitView {
+            List(BlendMode.allCases, id: \.self, selection: $selectedMode) { mode in
+                blendModeRow(mode: mode)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("Select blend mode \(mode.description)")
+            }
+            .navigationTitle("Modes")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showHelp = true
+                    } label: {
+                        Image(systemName: "questionmark.circle")
+                            .accessibilityLabel("Help")
                     }
                 }
-                .navigationTitle("Modes")
-                .navigationBarTitleDisplayMode(.inline)
-                .onReceive(blendModel.$compositingMode) { _ in
-                    withAnimation(.spring(response: 1, dampingFraction: 1, blendDuration: 0.3)) {
-                        sheetSize = .short
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Image(systemName: "slider.horizontal.3")
+                            .accessibilityLabel("Settings")
                     }
-                }
-                BlendModeDetail(mode: .normal)
-            } else {
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    EmptyView()
-                PrivacyEULATabBar()
-                } else {
-                    PrivacyEULATabBar()
                 }
             }
-            
+        } detail: {
+            NavigationStack {
+                if let mode = selectedMode {
+                    BlendModeDetail(mode: mode)
+                } else {
+                    ContentUnavailableView(
+                        "Select a Blend Mode",
+                        systemImage: "circle.grid.3x3",
+                        description: Text("Choose a blend mode from the list to explore it.")
+                    )
+                }
+            }
         }
         .glow(with: blendModel.background)
-        .onReceive(keychain.objectWillChange) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                withAnimation(.easeInOut(duration: 1)) {
-                    privAndEULA = keychain.EULAAccepted && keychain.privacyAccepted
-                }
+        .sheet(isPresented: $showHelp) {
+            NavigationStack {
+                HelpView()
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") { showHelp = false }
+                        }
+                    }
             }
         }
+        .sheet(isPresented: $showSettings) {
+            NavigationStack {
+                SettingsView()
+                    .navigationTitle("Settings")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") { showSettings = false }
+                        }
+                    }
+            }
+            .environment(blendModel)
+        }
     }
-    
-    func blendModeLabel(mode: BlendMode) -> some View {
+
+    private func blendModeRow(mode: BlendMode) -> some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
-                blendLabel(mode: mode)
+                blendModeLabel(mode: mode)
                 backgroundLabel
             }
-            //            .layoutPriority(1)
-            
             Spacer()
-            
-            GeometryReader { geometry in
-                BlendGroupView(mode: mode, geometry: geometry)
-            }
-            .frame(idealWidth: 75, idealHeight: 75)
-            .fixedSize()
-            .padding(.leading)
+            BlendGroupView(mode: mode)
+                .frame(width: 75, height: 75)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .padding(.leading)
         }
-        
     }
-    
-    func blendLabel(mode: BlendMode) -> some View {
+
+    private func blendModeLabel(mode: BlendMode) -> some View {
         VStack {
             HStack {
                 Text("Blend Mode:")
@@ -131,8 +97,8 @@ struct ContentView: View {
             }
         }
     }
-    
-    var backgroundLabel: some View {
+
+    private var backgroundLabel: some View {
         VStack {
             HStack {
                 Text("Background:")
@@ -140,25 +106,21 @@ struct ContentView: View {
             }
             HStack {
                 Spacer()
-                Text(UIColor(blendModel.background).accessibilityName)
+                Text(backgroundColorName)
             }
         }
     }
-    
-    private func switchSheet() {
-        switch sheetSize {
-        case .short:
-            sheetSize = .long
-        case .long:
-            sheetSize = .short
-        default:
-            break
-        }
+
+    private var backgroundColorName: String {
+        #if canImport(UIKit)
+        return UIColor(blendModel.background).accessibilityName
+        #else
+        return blendModel.background.description
+        #endif
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
+        .environment(BlendModel())
 }

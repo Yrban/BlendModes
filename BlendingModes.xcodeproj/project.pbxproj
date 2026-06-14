@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B286D992FDF4FF200917F49 /* DemoMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B286D982FDF4FF200917F49 /* DemoMode.swift */; };
+		5B286D9B2FDF507B00917F49 /* ImageLayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B286D9A2FDF507B00917F49 /* ImageLayerControlsView.swift */; };
+		5B286D9D2FDF508100917F49 /* TextLayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B286D9C2FDF508100917F49 /* TextLayerControlsView.swift */; };
+		5B286D9F2FDF508100917F49 /* CodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B286D9E2FDF508100917F49 /* CodeGeneratorView.swift */; };
 		8B1ED5E12714FE070054F7BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1ED5E02714FE070054F7BF /* Assets.xcassets */; };
 		8B1ED5E4271500400054F7BF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1ED5E3271500400054F7BF /* Launch Screen.storyboard */; };
 		8B1ED5E6271501400054F7BF /* alelin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1ED5E5271501400054F7BF /* alelin.png */; };
@@ -42,6 +46,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B286D982FDF4FF200917F49 /* DemoMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMode.swift; sourceTree = "<group>"; };
+		5B286D9A2FDF507B00917F49 /* ImageLayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLayerControlsView.swift; sourceTree = "<group>"; };
+		5B286D9C2FDF508100917F49 /* TextLayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLayerControlsView.swift; sourceTree = "<group>"; };
+		5B286D9E2FDF508100917F49 /* CodeGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeGeneratorView.swift; sourceTree = "<group>"; };
 		8B1ED5E02714FE070054F7BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B1ED5E3271500400054F7BF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8B1ED5E5271501400054F7BF /* alelin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alelin.png; sourceTree = "<group>"; };
@@ -150,6 +158,10 @@
 				8B1ED5E3271500400054F7BF /* Launch Screen.storyboard */,
 				8B1ED5E5271501400054F7BF /* alelin.png */,
 				8B2AC12F2707666D0039B4F7 /* Preview Content */,
+				5B286D982FDF4FF200917F49 /* DemoMode.swift */,
+				5B286D9A2FDF507B00917F49 /* ImageLayerControlsView.swift */,
+				5B286D9C2FDF508100917F49 /* TextLayerControlsView.swift */,
+				5B286D9E2FDF508100917F49 /* CodeGeneratorView.swift */,
 			);
 			path = BlendingModes;
 			sourceTree = "<group>";
@@ -270,10 +282,13 @@
 				8B4C8970270D300C00580080 /* CompositingGroupViewModifier.swift in Sources */,
 				8B2AC163270779920039B4F7 /* ColorExt.swift in Sources */,
 				8B20B3C12713B6B9002008F3 /* URLWebView.swift in Sources */,
+				5B286D992FDF4FF200917F49 /* DemoMode.swift in Sources */,
 				8B20B3BC2713B64C002008F3 /* EULAView.swift in Sources */,
 				8B20B3C72713B6E7002008F3 /* KeychainWrapper.swift in Sources */,
 				8B2AC1762708E9CC0039B4F7 /* ChooseColorsView.swift in Sources */,
 				8B2AC15F270767640039B4F7 /* BlendModel.swift in Sources */,
+				5B286D9B2FDF507B00917F49 /* ImageLayerControlsView.swift in Sources */,
+				5B286D9F2FDF508100917F49 /* CodeGeneratorView.swift in Sources */,
 				8B2AC1742708E9650039B4F7 /* BlendModeDetail.swift in Sources */,
 				8B20B3BE2713B654002008F3 /* PrivacyPolicyView.swift in Sources */,
 				8B20B32E2713703E002008F3 /* HelpView.swift in Sources */,
@@ -284,6 +299,7 @@
 				8BA9406F2710EB4100886927 /* ComparableExt.swift in Sources */,
 				8B2AC15B270766840039B4F7 /* BlendGroupView.swift in Sources */,
 				8B2AC12C2707666A0039B4F7 /* ContentView.swift in Sources */,
+				5B286D9D2FDF508100917F49 /* TextLayerControlsView.swift in Sources */,
 				8B4C894B270CDEAE00580080 /* SingleView.swift in Sources */,
 				8B8EA7A5270FC6140047DDE4 /* GlowViewModifier.swift in Sources */,
 				8B4C8996270F79D800580080 /* InformationView.swift in Sources */,
@@ -346,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -401,7 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -424,6 +440,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlendingModes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Blend Modes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -431,7 +448,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,6 +475,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlendingModes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Blend Modes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -465,7 +483,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
