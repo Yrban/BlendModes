@@ -75,6 +75,7 @@
 		8B8EA7A4270FC6140047DDE4 /* GlowViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowViewModifier.swift; sourceTree = "<group>"; };
 		8BA9404C2710ABB200886927 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		8BA9406E2710EB4100886927 /* ComparableExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableExt.swift; sourceTree = "<group>"; };
+		8BFAE48227603F0100F1A5FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +128,7 @@
 		8B2AC1282707666A0039B4F7 /* BlendingModes */ = {
 			isa = PBXGroup;
 			children = (
+				8BFAE48227603F0100F1A5FF /* Info.plist */,
 				8B2AC1292707666A0039B4F7 /* BlendingModesApp.swift */,
 				8B2AC12B2707666A0039B4F7 /* ContentView.swift */,
 				8B20B32D2713703E002008F3 /* HelpView.swift */,
@@ -421,6 +423,7 @@
 				DEVELOPMENT_TEAM = KR424649J7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlendingModes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +457,7 @@
 				DEVELOPMENT_TEAM = KR424649J7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlendingModes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
