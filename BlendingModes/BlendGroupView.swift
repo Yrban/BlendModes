@@ -2,130 +2,160 @@ import SwiftUI
 
 struct BlendGroupView: View {
     @Environment(BlendModel.self) private var blendModel
-    let mode: BlendMode
+    @State private var dragStartOffsets: [UUID: CGSize] = [:]
 
     var body: some View {
         GeometryReader { geo in
             let minDim = min(geo.size.width, geo.size.height)
-            let count = blendModel.colors.count
-            let offset = count > 1 ? Int(minDim) / (count * 10) : 0
+            let segments = buildSegments()
 
-            blendModel.background
+            let bgColor = blendModel.layers.last(where: { $0.type == .background })?.color ?? Color.gray
+            ZStack {
+                bgColor
+                    .ignoresSafeArea()
 
-            canvasContent(minDim: minDim, offset: offset, count: count)
-                .position(x: geo.size.width / 2, y: geo.size.height / 2)
+                // Render segments bottom-to-top; each segment above a CG boundary gets .compositingGroup()
+                ForEach(Array(segments.enumerated()), id: \.offset) { _, segment in
+                    ZStack {
+                        ForEach(segment.indices.reversed(), id: \.self) { index in
+                            let layer = blendModel.layers[index]
+                            canvasView(layer: layer, minDim: minDim)
+                                .offset(x: layer.xOffset, y: layer.yOffset)
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged { value in
+                                            if dragStartOffsets[layer.id] == nil {
+                                                dragStartOffsets[layer.id] = CGSize(
+                                                    width: layer.xOffset, height: layer.yOffset
+                                                )
+                                            }
+                                            let start = dragStartOffsets[layer.id]!
+                                            blendModel.layers[index].xOffset = start.width + value.translation.width
+                                            blendModel.layers[index].yOffset = start.height + value.translation.height
+                                        }
+                                        .onEnded { _ in
+                                            dragStartOffsets[layer.id] = nil
+                                        }
+                                )
+                        }
+                    }
+                    .compositingGroup(enabled: segment.needsCompositingGroup)
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 
+    // MARK: - Segment building
+
+    private struct LayerSegment {
+        let indices: [Int]
+        let needsCompositingGroup: Bool
+    }
+
+    /// Splits layers (top→bottom) at each compositingGroup layer.
+    /// Layers above a CG boundary are grouped and will receive .compositingGroup().
+    private func buildSegments() -> [LayerSegment] {
+        var segments: [LayerSegment] = []
+        var current: [Int] = []
+        for index in blendModel.layers.indices {
+            let type = blendModel.layers[index].type
+            if type == .background {
+                // Background rendered separately as full-bleed canvas fill — skip here
+            } else if type == .compositingGroup {
+                if !current.isEmpty {
+                    segments.append(LayerSegment(indices: current, needsCompositingGroup: true))
+                    current = []
+                }
+            } else {
+                current.append(index)
+            }
+        }
+        if !current.isEmpty {
+            segments.append(LayerSegment(indices: current, needsCompositingGroup: false))
+        }
+        return segments
+    }
+
+    // MARK: - Layer rendering
+
     @ViewBuilder
-    private func canvasContent(minDim: CGFloat, offset: Int, count: Int) -> some View {
-        if blendModel.demoMode == .circles {
-            circlesCanvas(offset: offset, count: count)
+    private func canvasView(layer: Layer, minDim: CGFloat) -> some View {
+        switch layer.type {
+        case .circles:
+            circlesCanvas(layer: layer)
                 .frame(width: minDim * 0.7, height: minDim * 0.7)
-        } else if blendModel.demoMode == .images {
-            imagesCanvas()
+        case .images:
+            imagesCanvas(layer: layer)
                 .frame(width: minDim, height: minDim)
-        } else {
-            textCanvas(size: minDim)
+        case .text:
+            textCanvas(layer: layer, size: minDim)
                 .frame(width: minDim, height: minDim)
+        case .compositingGroup, .background:
+            EmptyView()
         }
     }
 
     // MARK: - Circles
 
     @ViewBuilder
-    private func circlesCanvas(offset: Int, count: Int) -> some View {
-        ZStack {
-            ZStack {
-                ForEach(Array(zip(blendModel.colors.indices, blendModel.colors)), id: \.1) { index, color in
-                    SingleView(color: color, offset: offset, count: count, index: index)
-                        .accessibilityLabel("Circle \(index + 1) of \(count), blend mode: \(mode.description)")
-                }
-            }
-            .blendMode(mode)
-            .colorInvert(enabled: blendModel.colorInvert)
-            .compositingGroup(enabled: blendModel.compositingMode)
-            .blur(radius: blendModel.blur * 20)
-            .opacity(blendModel.opacity)
-
-            // Stroke outlines are not blended so they stay visible
-            ForEach(blendModel.colors.indices, id: \.self) { index in
-                Circle()
-                    .strokeBorder(.black, lineWidth: 2)
-                    .offset(x: CGFloat(offset * count), y: CGFloat(offset * count))
-                    .rotationEffect(.degrees(360.0 / Double(max(count, 1)) * Double(index)))
-            }
-        }
+    private func circlesCanvas(layer: Layer) -> some View {
+        Circle()
+            .fill(layer.color)
+            .blendMode(layer.blendMode)
+            .colorInvert(enabled: layer.colorInvert)
+            .blur(radius: layer.blur * 20)
+            .opacity(layer.opacity)
     }
 
-    // MARK: - Images
+    // MARK: - Image
 
     @ViewBuilder
-    private func imagesCanvas() -> some View {
-        // Base layer
-        if let data = blendModel.bottomImageData,
-           let uiImage = UIImage(data: data) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .scaledToFit()
-        } else {
-            imagePlaceholder(label: "Base Image", icon: "photo")
-        }
-
-        // Blend layer
+    private func imagesCanvas(layer: Layer) -> some View {
         ZStack {
-            if let data = blendModel.topImageData,
-               let uiImage = UIImage(data: data) {
+            if let data = layer.imageData, let uiImage = UIImage(data: data) {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
             } else {
-                imagePlaceholder(label: "Blend Image", icon: "photo.on.rectangle")
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.secondary.opacity(0.15))
+                    .overlay {
+                        VStack(spacing: 8) {
+                            Image(systemName: "photo").font(.title2)
+                            Text("Tap to select image").font(.caption)
+                        }
+                        .foregroundStyle(.secondary)
+                    }
             }
         }
-        .blendMode(mode)
-        .colorInvert(enabled: blendModel.colorInvert)
-        .compositingGroup(enabled: blendModel.compositingMode)
-        .blur(radius: blendModel.blur * 20)
-        .opacity(blendModel.opacity)
-    }
-
-    private func imagePlaceholder(label: String, icon: String) -> some View {
-        RoundedRectangle(cornerRadius: 12)
-            .fill(.secondary.opacity(0.15))
-            .overlay {
-                VStack(spacing: 8) {
-                    Image(systemName: icon)
-                        .font(.title2)
-                    Text(label)
-                        .font(.caption)
-                }
-                .foregroundStyle(.secondary)
-            }
+        .blendMode(layer.blendMode)
+        .colorInvert(enabled: layer.colorInvert)
+        .blur(radius: layer.blur * 20)
+        .opacity(layer.opacity)
     }
 
     // MARK: - Text
 
     @ViewBuilder
-    private func textCanvas(size: CGFloat) -> some View {
+    private func textCanvas(layer: Layer, size: CGFloat) -> some View {
         ZStack {
-            Text(blendModel.demoText.isEmpty ? "Blend" : blendModel.demoText)
-                .font(.system(size: blendModel.fontSize))
-                .foregroundStyle(blendModel.textColor)
+            Text(layer.text.isEmpty ? "Blend" : layer.text)
+                .font(.system(size: layer.fontSize))
+                .foregroundStyle(layer.textColor)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
                 .padding(size * 0.05)
         }
-        .blendMode(mode)
-        .colorInvert(enabled: blendModel.colorInvert)
-        .compositingGroup(enabled: blendModel.compositingMode)
-        .blur(radius: blendModel.blur * 20)
-        .opacity(blendModel.opacity)
+        .blendMode(layer.blendMode)
+        .colorInvert(enabled: layer.colorInvert)
+        .blur(radius: layer.blur * 20)
+        .opacity(layer.opacity)
     }
 }
 
 #Preview {
-    BlendGroupView(mode: .multiply)
+    BlendGroupView()
         .frame(width: 300, height: 300)
-        .environment(BlendModel(colors: [.red, .blue, .green]))
+        .environment(BlendModel())
 }

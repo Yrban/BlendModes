@@ -1,57 +1,77 @@
 import SwiftUI
 import Observation
 
-@Observable
-class BlendModel {
-    var colors: [Color]
-    var background: Color
-    var colorInvert: Bool
-    var compositingMode: Bool
-    var blur: Double
-    var opacity: Double
+struct Layer: Identifiable {
+    var id = UUID()
+    var type: DemoMode
 
-    // Demo mode selection
-    var demoMode: DemoMode = .circles
+    // Blend settings
+    var blendMode: BlendMode = .normal
+    var opacity: Double = 1.0
+    var blur: Double = 0.0
+    var colorInvert: Bool = false
 
-    // Images mode
-    var bottomImageData: Data? = nil
-    var topImageData: Data? = nil
+    // Circles content — one circle per layer; add another layer for a second circle
+    var color: Color = .red
 
-    // Text mode
-    var demoText: String = "Blend"
+    // Position offset in the canvas (points)
+    var xOffset: CGFloat = 0
+    var yOffset: CGFloat = 0
+
+    // Image content — one image per layer; add another layer for a second image
+    var imageData: Data? = nil
+
+    // Text content
+    var text: String = "Blend"
     var textColor: Color = .white
     var fontSize: Double = 72
+}
 
-    init(colors: [Color] = [.red], background: Color = .gray) {
-        self.colors = colors
-        self.background = background
-        self.colorInvert = false
-        self.compositingMode = false
-        self.blur = 0
-        self.opacity = 1
-    }
+@Observable
+class BlendModel {
+    // layers[0] = top of canvas, layers.last = bottom of canvas
+    // The background layer is always last; it fills the canvas and is not draggable
+    var layers: [Layer]
 
-    func addColor(_ color: Color = .random) {
-        colors.append(color)
-    }
-
-    func changeColor(_ color: Color, at index: Int) {
-        colors[index] = color
+    init(layers: [Layer]? = nil) {
+        if let layers {
+            self.layers = layers
+        } else {
+            var bg = Layer(type: .background)
+            bg.color = .gray
+            self.layers = [Layer(type: .circles), bg]
+        }
     }
 
     // MARK: - Code Generation
 
-    func codeSnippet(for mode: BlendMode) -> String {
-        var lines: [String] = ["ZStack {"]
-        lines.append("    \(colorLiteral(background)) // background")
+    func codeSnippet() -> String {
+        var lines = ["ZStack {"]
+        let bgColor = layers.last(where: { $0.type == .background })?.color ?? .gray
+        lines.append("    \(colorLiteral(bgColor)) // background")
 
-        switch demoMode {
-        case .circles:
-            lines += circlesCode(mode: mode)
-        case .images:
-            lines += imagesCode(mode: mode)
-        case .text:
-            lines += textCode(mode: mode)
+        // Split at compositingGroup layers; each group above a CG boundary gets .compositingGroup()
+        // Exclude background layers from content segments
+        var segments: [(layers: [Layer], needsCG: Bool)] = []
+        var current: [Layer] = []
+        for layer in layers where layer.type != .background {
+            if layer.type == .compositingGroup {
+                if !current.isEmpty { segments.append((current, true)); current = [] }
+            } else {
+                current.append(layer)
+            }
+        }
+        if !current.isEmpty { segments.append((current, false)) }
+
+        for segment in segments.reversed() {
+            if segment.needsCG {
+                lines.append("    ZStack {")
+                for layer in segment.layers.reversed() { lines += layerCode(layer, indent: "        ") }
+                lines.append("    }")
+                lines.append("    .compositingGroup()")
+            } else {
+                for layer in segment.layers.reversed() { lines += layerCode(layer, indent: "    ") }
+            }
         }
 
         lines.append("}")
@@ -60,76 +80,59 @@ class BlendModel {
 
     // MARK: - Private helpers
 
-    private func circlesCode(mode: BlendMode) -> [String] {
-        var lines: [String] = []
-        let count = max(colors.count, 1)
-        // Representative offset using a 200pt canvas
-        let offset = count > 1 ? 200.0 / Double(count * 10) : 0.0
-
-        lines.append("    ZStack {")
-        for (i, color) in colors.enumerated() {
-            let angle = 360.0 / Double(count) * Double(i)
-            lines.append("        Circle()")
-            lines.append("            .fill(\(colorLiteral(color)))")
-            if offset > 0 {
-                lines.append("            .offset(x: \(formatted(offset)), y: \(formatted(offset)))")
-            }
-            if i > 0 {
-                lines.append("            .rotationEffect(.degrees(\(formatted(angle))))")
-            }
+    private func layerCode(_ layer: Layer, indent: String) -> [String] {
+        switch layer.type {
+        case .circles:          return circlesCode(layer, indent: indent)
+        case .images:           return imagesCode(layer, indent: indent)
+        case .text:             return textCode(layer, indent: indent)
+        case .compositingGroup: return []
+        case .background:       return []
         }
-        lines.append("    }")
-        lines += blendModifiers(mode: mode, indent: "    ")
+    }
+
+    private func circlesCode(_ layer: Layer, indent: String) -> [String] {
+        var lines: [String] = []
+        lines.append("\(indent)// \(layer.type.rawValue)")
+        lines.append("\(indent)Circle()")
+        lines.append("\(indent)    .fill(\(colorLiteral(layer.color)))")
+        lines += modifiers(layer, indent: indent)
         return lines
     }
 
-    private func imagesCode(mode: BlendMode) -> [String] {
+    private func imagesCode(_ layer: Layer, indent: String) -> [String] {
         var lines: [String] = []
-        lines.append("    // Replace asset names with your images")
-        lines.append("    Image(\"baseImage\")")
-        lines.append("        .resizable()")
-        lines.append("        .scaledToFit()")
-        lines.append("    Image(\"blendImage\")")
-        lines.append("        .resizable()")
-        lines.append("        .scaledToFit()")
-        lines += blendModifiers(mode: mode, indent: "    ")
+        lines.append("\(indent)// \(layer.type.rawValue)")
+        lines.append("\(indent)Image(\"myImage\") // replace with your asset name")
+        lines.append("\(indent)    .resizable()")
+        lines.append("\(indent)    .scaledToFit()")
+        lines += modifiers(layer, indent: indent)
         return lines
     }
 
-    private func textCode(mode: BlendMode) -> [String] {
-        let displayText = demoText.isEmpty ? "Blend" : demoText
+    private func textCode(_ layer: Layer, indent: String) -> [String] {
+        let t = layer.text.isEmpty ? "Blend" : layer.text
         var lines: [String] = []
-        lines.append("    Text(\"\(displayText)\")")
-        lines.append("        .font(.system(size: \(Int(fontSize))))")
-        lines.append("        .foregroundStyle(\(colorLiteral(textColor)))")
-        lines += blendModifiers(mode: mode, indent: "    ")
+        lines.append("\(indent)// \(layer.type.rawValue)")
+        lines.append("\(indent)Text(\"\(t)\")")
+        lines.append("\(indent)    .font(.system(size: \(Int(layer.fontSize))))")
+        lines.append("\(indent)    .foregroundStyle(\(colorLiteral(layer.textColor)))")
+        lines += modifiers(layer, indent: indent)
         return lines
     }
 
-    private func blendModifiers(mode: BlendMode, indent: String) -> [String] {
+    private func modifiers(_ layer: Layer, indent: String) -> [String] {
         var lines: [String] = []
-        lines.append("\(indent).blendMode(\(mode.description))")
-        if opacity < 1 {
-            lines.append("\(indent).opacity(\(formatted(opacity)))")
-        }
-        if blur > 0 {
-            lines.append("\(indent).blur(radius: \(formatted(blur * 20)))")
-        }
-        if colorInvert {
-            lines.append("\(indent).colorInvert()")
-        }
-        if compositingMode {
-            lines.append("\(indent).compositingGroup()")
-        }
+        lines.append("\(indent).blendMode(\(layer.blendMode.description))")
+        if layer.opacity < 1 { lines.append("\(indent).opacity(\(fmt(layer.opacity)))") }
+        if layer.blur    > 0 { lines.append("\(indent).blur(radius: \(fmt(layer.blur * 20)))") }
+        if layer.colorInvert  { lines.append("\(indent).colorInvert()") }
         return lines
     }
 
     private func colorLiteral(_ color: Color) -> String {
         guard let c = color.components else { return "Color.gray" }
-        return "Color(red: \(formatted(c.r)), green: \(formatted(c.g)), blue: \(formatted(c.b)))"
+        return "Color(red: \(fmt(c.r)), green: \(fmt(c.g)), blue: \(fmt(c.b)))"
     }
 
-    private func formatted(_ value: Double) -> String {
-        String(format: "%.2f", value)
-    }
+    private func fmt(_ v: Double) -> String { String(format: "%.2f", v) }
 }

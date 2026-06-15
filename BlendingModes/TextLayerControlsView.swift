@@ -1,32 +1,16 @@
 import SwiftUI
 
 struct TextLayerControlsView: View {
-    @Environment(BlendModel.self) private var blendModel
+    @Binding var layer: Layer
 
     var body: some View {
-        @Bindable var model = blendModel
+        ColorPicker("Text Color", selection: $layer.textColor, supportsOpacity: false)
 
-        HStack {
-            Text("Text")
-                .foregroundStyle(.secondary)
-            Spacer()
-            TextField("Text to blend", text: $model.demoText)
-                .multilineTextAlignment(.trailing)
-        }
-
-        ColorPicker("Text Color", selection: $model.textColor, supportsOpacity: false)
-
-        VStack(alignment: .leading) {
-            Text("Font Size: \(Int(model.fontSize))pt")
-                .foregroundStyle(.secondary)
-                .font(.caption)
-            Slider(value: $model.fontSize, in: 20...200, step: 4)
-                .tint(.blue)
-        }
+        SliderView(value: $layer.fontSize, title: "Font Size", range: 20...200, displayText: "\(Int(layer.fontSize))pt")
     }
 }
 
 #Preview {
-    List { TextLayerControlsView() }
-        .environment(BlendModel())
+    @Previewable @State var layer = Layer(type: .text)
+    List { TextLayerControlsView(layer: $layer) }
 }

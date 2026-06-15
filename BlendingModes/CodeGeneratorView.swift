@@ -2,13 +2,12 @@ import SwiftUI
 
 struct CodeGeneratorView: View {
     @Environment(BlendModel.self) private var blendModel
-    let mode: BlendMode
     @State private var copied = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             ScrollView([.horizontal, .vertical]) {
-                Text(blendModel.codeSnippet(for: mode))
+                Text(blendModel.codeSnippet())
                     .font(.system(.caption, design: .monospaced))
                     .textSelection(.enabled)
                     .padding(12)
@@ -28,7 +27,7 @@ struct CodeGeneratorView: View {
     }
 
     private func copyCode() {
-        let code = blendModel.codeSnippet(for: mode)
+        let code = blendModel.codeSnippet()
         #if canImport(UIKit)
         UIPasteboard.general.string = code
         #elseif canImport(AppKit)
@@ -44,8 +43,6 @@ struct CodeGeneratorView: View {
 }
 
 #Preview {
-    List {
-        CodeGeneratorView(mode: .multiply)
-    }
-    .environment(BlendModel(colors: [.red, .blue]))
+    List { CodeGeneratorView() }
+        .environment(BlendModel())
 }

@@ -2,63 +2,36 @@ import SwiftUI
 import PhotosUI
 
 struct ImageLayerControlsView: View {
-    @Environment(BlendModel.self) private var blendModel
-    @State private var bottomPickerItem: PhotosPickerItem? = nil
-    @State private var topPickerItem: PhotosPickerItem? = nil
+    @Binding var layer: Layer
+    @State private var pickerItem: PhotosPickerItem? = nil
 
     var body: some View {
-        @Bindable var model = blendModel
-
-        PhotosPicker(selection: $bottomPickerItem, matching: .images) {
+        PhotosPicker(selection: $pickerItem, matching: .images) {
             HStack {
-                Label("Base Image", systemImage: "photo")
+                Label(
+                    layer.imageData == nil ? "Select Image" : "Change Image",
+                    systemImage: "photo"
+                )
                 Spacer()
-                if model.bottomImageData != nil {
+                if layer.imageData != nil {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundStyle(.green)
                 }
             }
         }
-        .onChange(of: bottomPickerItem) { _, item in
+        .onChange(of: pickerItem) { _, item in
             Task {
                 if let data = try? await item?.loadTransferable(type: Data.self) {
-                    await MainActor.run { model.bottomImageData = data }
+                    await MainActor.run { layer.imageData = data }
                 }
             }
         }
 
-        PhotosPicker(selection: $topPickerItem, matching: .images) {
-            HStack {
-                Label("Blend Image", systemImage: "photo.on.rectangle")
-                Spacer()
-                if model.topImageData != nil {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(.green)
-                }
-            }
-        }
-        .onChange(of: topPickerItem) { _, item in
-            Task {
-                if let data = try? await item?.loadTransferable(type: Data.self) {
-                    await MainActor.run { model.topImageData = data }
-                }
-            }
-        }
 
-        if model.bottomImageData != nil || model.topImageData != nil {
-            Button(role: .destructive) {
-                model.bottomImageData = nil
-                model.topImageData = nil
-                bottomPickerItem = nil
-                topPickerItem = nil
-            } label: {
-                Label("Clear Images", systemImage: "trash")
-            }
-        }
     }
 }
 
 #Preview {
-    List { ImageLayerControlsView() }
-        .environment(BlendModel())
+    @Previewable @State var layer = Layer(type: .images)
+    List { ImageLayerControlsView(layer: $layer) }
 }

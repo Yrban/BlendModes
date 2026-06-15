@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B2363802FDF5CEE00D9768E /* LayerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B23637F2FDF5CEE00D9768E /* LayerRowView.swift */; };
+		5B2363822FDF8FA500D9768E /* LayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2363812FDF8FA500D9768E /* LayerListView.swift */; };
 		5B286D992FDF4FF200917F49 /* DemoMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B286D982FDF4FF200917F49 /* DemoMode.swift */; };
 		5B286D9B2FDF507B00917F49 /* ImageLayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B286D9A2FDF507B00917F49 /* ImageLayerControlsView.swift */; };
 		5B286D9D2FDF508100917F49 /* TextLayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B286D9C2FDF508100917F49 /* TextLayerControlsView.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B23637F2FDF5CEE00D9768E /* LayerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerRowView.swift; sourceTree = "<group>"; };
+		5B2363812FDF8FA500D9768E /* LayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerListView.swift; sourceTree = "<group>"; };
 		5B286D982FDF4FF200917F49 /* DemoMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMode.swift; sourceTree = "<group>"; };
 		5B286D9A2FDF507B00917F49 /* ImageLayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLayerControlsView.swift; sourceTree = "<group>"; };
 		5B286D9C2FDF508100917F49 /* TextLayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLayerControlsView.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				5B286D9A2FDF507B00917F49 /* ImageLayerControlsView.swift */,
 				5B286D9C2FDF508100917F49 /* TextLayerControlsView.swift */,
 				5B286D9E2FDF508100917F49 /* CodeGeneratorView.swift */,
+				5B23637F2FDF5CEE00D9768E /* LayerRowView.swift */,
+				5B2363812FDF8FA500D9768E /* LayerListView.swift */,
 			);
 			path = BlendingModes;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 			files = (
 				8B2AC15D270767360039B4F7 /* SettingsView.swift in Sources */,
 				8B2AC1782708F1E10039B4F7 /* AdjustModeView.swift in Sources */,
+				5B2363802FDF5CEE00D9768E /* LayerRowView.swift in Sources */,
 				8B4C896E270D2AE600580080 /* ColorInvertViewModifier.swift in Sources */,
 				8B20B3CC2713B94E002008F3 /* PrivacyEULATabBar.swift in Sources */,
 				8B4C8994270F604900580080 /* SliderView.swift in Sources */,
@@ -304,6 +311,7 @@
 				8B8EA7A5270FC6140047DDE4 /* GlowViewModifier.swift in Sources */,
 				8B4C8996270F79D800580080 /* InformationView.swift in Sources */,
 				8B20B3C52713B6E7002008F3 /* KeychainItemAccessibility.swift in Sources */,
+				5B2363822FDF8FA500D9768E /* LayerListView.swift in Sources */,
 				8B2AC12A2707666A0039B4F7 /* BlendingModesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
