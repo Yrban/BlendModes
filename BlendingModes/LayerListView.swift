@@ -159,22 +159,22 @@ private enum Preset: String, CaseIterable {
             var c1 = Layer(type: .circles); c1.color = .blue;   c1.xOffset = -50
             var c2 = Layer(type: .circles); c2.color = .red;    c2.blendMode = .multiply; c2.xOffset = 50
             var bg = Layer(type: .background); bg.color = .white
-            return [c1, c2, bg]
+            return [c2, c1, bg]
         case .screenOnBlack:
             var c1 = Layer(type: .circles); c1.color = .blue;   c1.xOffset = -50
             var c2 = Layer(type: .circles); c2.color = .red;    c2.blendMode = .screen;   c2.xOffset = 50
             var bg = Layer(type: .background); bg.color = .black
-            return [c1, c2, bg]
+            return [c2, c1, bg]
         case .overlay:
             var c1 = Layer(type: .circles); c1.color = .orange; c1.xOffset = -50
             var c2 = Layer(type: .circles); c2.color = .purple; c2.blendMode = .overlay;  c2.xOffset = 50
             var bg = Layer(type: .background); bg.color = Color(white: 0.5)
-            return [c1, c2, bg]
+            return [c2, c1, bg]
         case .difference:
             var c1 = Layer(type: .circles); c1.color = .cyan;   c1.xOffset = -50
             var c2 = Layer(type: .circles); c2.color = .yellow; c2.blendMode = .difference; c2.xOffset = 50
             var bg = Layer(type: .background); bg.color = Color(white: 0.15)
-            return [c1, c2, bg]
+            return [c2, c1, bg]
         }
     }
 }
