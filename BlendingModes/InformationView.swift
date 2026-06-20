@@ -67,7 +67,13 @@ struct InformationView: View {
     """
 
     private let compositingDescription = """
-    A compositing group makes compositing effects in this view's ancestor views, such as opacity and the blend mode, take effect before this view is rendered. Use compositingGroup() to apply effects to a parent view before applying effects to this view.
+    By default, each layer's blend mode interacts with everything beneath it — including layers outside any logical group. .compositingGroup() changes this scope.
+
+    Layers inside a compositing group first blend together among themselves, producing a single flattened image. Only that combined result then interacts with the layers below.
+
+    This matters when you want to isolate blending. For example: two layers using .multiply inside a group will multiply against each other first. The merged output then blends against the canvas. Without the group, each layer would multiply independently against every layer below it — which produces a visually different (and often unintended) result.
+
+    Opacity works the same way: applying .opacity() to a compositing group fades the whole group as a unit, rather than making each layer individually semi-transparent and letting them bleed through each other.
     """
 }
 
