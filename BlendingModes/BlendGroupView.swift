@@ -53,6 +53,19 @@ struct BlendGroupView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .overlay(alignment: .top) {
+            HStack {
+                Spacer()
+                HStack {
+                    Image(.icon)
+                        .clipShape(.capsule)
+                    Text("BlendModes")
+                }
+                .padding()
+                Spacer()
+            }
+            .padding(.top)
+        }
     }
     
     // MARK: - Segment building

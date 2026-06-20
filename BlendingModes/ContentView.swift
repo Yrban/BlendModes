@@ -25,6 +25,7 @@ struct ContentView: View {
                 LayerListView()
             } detail: {
                 BlendGroupView()
+                    .ignoresSafeArea()
             }
             
         }
