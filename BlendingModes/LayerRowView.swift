@@ -65,7 +65,6 @@ struct LayerRowView: View {
                     Divider()
 
                     SliderView(value: $layer.opacity, title: "Opacity")
-                    SliderView(value: $layer.blur, title: "Blur")
 
                     Toggle("Color Invert", isOn: $layer.colorInvert)
                         .accessibilityLabel("color invert")

@@ -8,7 +8,6 @@ struct Layer: Identifiable {
     // Blend settings
     var blendMode: BlendMode = .normal
     var opacity: Double = 1.0
-    var blur: Double = 0.0
     var colorInvert: Bool = false
 
     // Circles content — one circle per layer; add another layer for a second circle
@@ -124,7 +123,6 @@ class BlendModel {
         var lines: [String] = []
         lines.append("\(indent).blendMode(\(layer.blendMode.description))")
         if layer.opacity < 1 { lines.append("\(indent).opacity(\(fmt(layer.opacity)))") }
-        if layer.blur    > 0 { lines.append("\(indent).blur(radius: \(fmt(layer.blur * 20)))") }
         if layer.colorInvert  { lines.append("\(indent).colorInvert()") }
         return lines
     }

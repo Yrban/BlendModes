@@ -104,7 +104,6 @@ struct BlendGroupView: View {
             .fill(layer.color)
             .blendMode(layer.blendMode)
             .colorInvert(enabled: layer.colorInvert)
-            .blur(radius: layer.blur * 20)
             .opacity(layer.opacity)
     }
 
@@ -131,7 +130,6 @@ struct BlendGroupView: View {
         }
         .blendMode(layer.blendMode)
         .colorInvert(enabled: layer.colorInvert)
-        .blur(radius: layer.blur * 20)
         .opacity(layer.opacity)
     }
 
@@ -149,7 +147,6 @@ struct BlendGroupView: View {
         }
         .blendMode(layer.blendMode)
         .colorInvert(enabled: layer.colorInvert)
-        .blur(radius: layer.blur * 20)
         .opacity(layer.opacity)
     }
 }
