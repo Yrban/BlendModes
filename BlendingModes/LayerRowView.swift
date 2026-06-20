@@ -1,5 +1,15 @@
 import SwiftUI
 
+private let blendModeGroups: [(title: String, modes: [BlendMode])] = [
+    ("Normal",      [.normal]),
+    ("Darken",      [.darken, .multiply, .colorBurn, .plusDarker]),
+    ("Lighten",     [.lighten, .screen, .colorDodge, .plusLighter]),
+    ("Contrast",    [.overlay, .softLight, .hardLight]),
+    ("Inversion",   [.difference, .exclusion]),
+    ("Component",   [.hue, .saturation, .color, .luminosity]),
+    ("Compositing", [.destinationOut, .destinationOver, .sourceAtop]),
+]
+
 struct LayerRowView: View {
     @Binding var layer: Layer
     @State private var isExpanded = false
@@ -34,10 +44,14 @@ struct LayerRowView: View {
         } else {
             DisclosureGroup(isExpanded: $isExpanded) {
                 VStack(alignment: .leading, spacing: 12) {
-                    // Blend mode picker
+                    // Blend mode picker — grouped by category
                     Menu {
-                        ForEach(BlendMode.allCases, id: \.self) { mode in
-                            Button(mode.description) { layer.blendMode = mode }
+                        ForEach(blendModeGroups, id: \.title) { group in
+                            Section(group.title) {
+                                ForEach(group.modes, id: \.self) { mode in
+                                    Button(mode.description) { layer.blendMode = mode }
+                                }
+                            }
                         }
                     } label: {
                         HStack {
@@ -70,6 +84,16 @@ struct LayerRowView: View {
                         .accessibilityLabel("color invert")
                         .accessibilityValue(layer.colorInvert ? "is on" : "is off")
                         .accessibilityRemoveTraits(.isButton)
+
+                    if layer.xOffset != 0 || layer.yOffset != 0 {
+                        Button {
+                            layer.xOffset = 0
+                            layer.yOffset = 0
+                        } label: {
+                            Label("Recenter on Canvas", systemImage: "scope")
+                        }
+                        .foregroundStyle(.secondary)
+                    }
                 }
                 .padding(.vertical, 8)
             } label: {

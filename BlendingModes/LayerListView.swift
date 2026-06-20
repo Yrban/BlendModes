@@ -15,10 +15,28 @@ struct LayerListView: View {
                 Spacer()
                 EditButton()
                     .font(.callout)
+                Button {
+                    for i in blendModel.layers.indices {
+                        blendModel.layers[i].xOffset = 0
+                        blendModel.layers[i].yOffset = 0
+                    }
+                } label: {
+                    Image(systemName: "arrow.counterclockwise")
+                        .font(.title3)
+                }
                 Menu {
-                    ForEach(availableTypes, id: \.self) { type in
-                        Button { insertLayer(type: type) } label: {
-                            Label(type.rawValue, systemImage: type.systemImage)
+                    Section("Add Layer") {
+                        ForEach(availableTypes, id: \.self) { type in
+                            Button { insertLayer(type: type) } label: {
+                                Label(type.rawValue, systemImage: type.systemImage)
+                            }
+                        }
+                    }
+                    Section("Presets") {
+                        ForEach(Preset.allCases, id: \.self) { preset in
+                            Button { blendModel.layers = preset.layers } label: {
+                                Label(preset.rawValue, systemImage: preset.systemImage)
+                            }
                         }
                     }
                 } label: {
@@ -78,6 +96,7 @@ struct LayerListView: View {
                         }
                     }
             }
+            .presentationDetents([.large])
             .environment(blendModel)
         }
     }
@@ -115,6 +134,47 @@ struct LayerListView: View {
             blendModel.layers.insert(Layer(type: .compositingGroup), at: insertIndex)
         default:
             blendModel.layers.insert(Layer(type: type), at: 0)
+        }
+    }
+}
+
+private enum Preset: String, CaseIterable {
+    case multiplyOnWhite = "Multiply on White"
+    case screenOnBlack   = "Screen on Black"
+    case overlay         = "Overlay"
+    case difference      = "Difference"
+
+    var systemImage: String {
+        switch self {
+        case .multiplyOnWhite: "circle.lefthalf.filled"
+        case .screenOnBlack:   "circle.righthalf.filled"
+        case .overlay:         "circle.fill"
+        case .difference:      "plus.circle"
+        }
+    }
+
+    var layers: [Layer] {
+        switch self {
+        case .multiplyOnWhite:
+            var c1 = Layer(type: .circles); c1.color = .blue;   c1.xOffset = -50
+            var c2 = Layer(type: .circles); c2.color = .red;    c2.blendMode = .multiply; c2.xOffset = 50
+            var bg = Layer(type: .background); bg.color = .white
+            return [c1, c2, bg]
+        case .screenOnBlack:
+            var c1 = Layer(type: .circles); c1.color = .blue;   c1.xOffset = -50
+            var c2 = Layer(type: .circles); c2.color = .red;    c2.blendMode = .screen;   c2.xOffset = 50
+            var bg = Layer(type: .background); bg.color = .black
+            return [c1, c2, bg]
+        case .overlay:
+            var c1 = Layer(type: .circles); c1.color = .orange; c1.xOffset = -50
+            var c2 = Layer(type: .circles); c2.color = .purple; c2.blendMode = .overlay;  c2.xOffset = 50
+            var bg = Layer(type: .background); bg.color = Color(white: 0.5)
+            return [c1, c2, bg]
+        case .difference:
+            var c1 = Layer(type: .circles); c1.color = .cyan;   c1.xOffset = -50
+            var c2 = Layer(type: .circles); c2.color = .yellow; c2.blendMode = .difference; c2.xOffset = 50
+            var bg = Layer(type: .background); bg.color = Color(white: 0.15)
+            return [c1, c2, bg]
         }
     }
 }
