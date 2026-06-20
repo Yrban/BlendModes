@@ -9,8 +9,9 @@ struct InformationView: View {
             Section("About") {
                 Text(aboutText)
                     .fixedSize(horizontal: false, vertical: true)
-                Button("github.com/Yrban/BlendingModes") {
-                    if let url = URL(string: "https://github.com/Yrban/BlendingModes") {
+                NavigationLink("How to Use") { InstructionsView() }
+                Button("github.com/Yrban/BlendModes") {
+                    if let url = URL(string: "https://github.com/Yrban/BlendModes") {
                         openURL(url)
                     }
                 }
@@ -36,7 +37,7 @@ struct InformationView: View {
     }
 
     private let aboutText = """
-    Blend Modes helps SwiftUI developers explore blend modes, compositing, color inversion, blur, and opacity. Seeing how .blendMode() behaves on screen is not always intuitive — colors interact in unexpected ways.
+    Blend Modes helps SwiftUI developers explore blend modes, compositing, color inversion, and opacity. Seeing how .blendMode() behaves on screen is not always intuitive — colors interact in unexpected ways.
 
     Add any combination of Color Circle, Image, and Text layers. Drag layers on the canvas to reposition them. Swipe left on a layer row to delete it.
     """
