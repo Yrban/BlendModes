@@ -64,7 +64,6 @@ struct BlendGroupView: View {
                 .padding()
                 Spacer()
             }
-            .padding(.top)
         }
     }
     

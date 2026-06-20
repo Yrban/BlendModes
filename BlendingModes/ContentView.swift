@@ -9,7 +9,6 @@ struct ContentView: View {
         if sizeClass == .compact {
             NavigationStack {
                 BlendGroupView()
-                    .ignoresSafeArea()
                     .sheet(isPresented: .constant(true)) {
                         LayerListView()
                             .presentationDetents([.height(40), .medium, .large])
@@ -25,7 +24,6 @@ struct ContentView: View {
                 LayerListView()
             } detail: {
                 BlendGroupView()
-                    .ignoresSafeArea()
             }
             
         }
