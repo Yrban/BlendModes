@@ -58,9 +58,12 @@ struct BlendGroupView: View {
                 Spacer()
                 HStack {
                     Image(.icon)
-                        .clipShape(.capsule)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30, height: 30)
                     Text("BlendModes")
                 }
+                .font(.headline)
                 .padding()
                 Spacer()
             }

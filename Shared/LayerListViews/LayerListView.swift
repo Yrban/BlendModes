@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LayerListView: View {
+    var isCodeSectionVisible: Bool = true
     @Environment(BlendModel.self) private var blendModel
     @State private var showInfo = false
 
@@ -13,8 +14,10 @@ struct LayerListView: View {
                 Text("Layers")
                     .font(.headline)
                 Spacer()
+                #if os(iOS)
                 EditButton()
                     .font(.callout)
+                #endif
                 Button {
                     for i in blendModel.layers.indices {
                         blendModel.layers[i].xOffset = 0
@@ -81,15 +84,27 @@ struct LayerListView: View {
                     }
                 }
 
-                Section("Generated Code") {
-                    CodeGeneratorView()
-                }
             }
             #if os(iOS)
             .listStyle(.insetGrouped)
             #else
             .listStyle(.sidebar)
             #endif
+
+            if isCodeSectionVisible {
+                Divider()
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Generated Code")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 10)
+                    CodeGeneratorView()
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 12)
+                }
+            }
         }
         .sheet(isPresented: $showInfo) {
             NavigationStack {
@@ -102,6 +117,8 @@ struct LayerListView: View {
             }
             #if os(iOS)
             .presentationDetents([.large])
+            #elseif os(macOS)
+            .frame(minWidth: 500, minHeight: 600)
             #endif
             .environment(blendModel)
         }

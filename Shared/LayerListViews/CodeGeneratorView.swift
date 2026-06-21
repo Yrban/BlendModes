@@ -14,7 +14,7 @@ struct CodeGeneratorView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .frame(maxHeight: 200)
-            .background(Color(.secondarySystemBackground))
+            .background(Color.secondary.opacity(0.1))
             .clipShape(RoundedRectangle(cornerRadius: 8))
 
             Button {

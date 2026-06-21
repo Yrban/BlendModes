@@ -6,7 +6,9 @@ struct PrivacyPolicyView: View {
     var body: some View {
         UrlWebView(urlToDisplay: url)
             .navigationTitle("Privacy Policy")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
     }
 }
 

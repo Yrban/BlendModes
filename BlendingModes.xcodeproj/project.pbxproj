@@ -6,7 +6,27 @@
 	objectVersion = 70;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		5B898AF12FE75CD400364BF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B2AC11E2707666A0039B4F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B898AE32FE75CD200364BF3;
+			remoteInfo = BlendModes;
+		};
+		5B898AFB2FE75CD400364BF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B2AC11E2707666A0039B4F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B898AE32FE75CD200364BF3;
+			remoteInfo = BlendModes;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		5B898AE42FE75CD200364BF3 /* BlendModes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlendModes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B898AF02FE75CD400364BF3 /* BlendModesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlendModesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B898AFA2FE75CD400364BF3 /* BlendModesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlendModesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2AC1262707666A0039B4F7 /* Blend Modes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blend Modes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -18,13 +38,66 @@
 			);
 			target = 8B2AC1252707666A0039B4F7 /* BlendingModes */;
 		};
+		5B898B222FE81EEE00364BF3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppIcon.icon,
+				BlendGroupViews/BlendGroupView.swift,
+				Enums/DemoMode.swift,
+				Extensions/BlendModeExt.swift,
+				Extensions/ColorExt.swift,
+				LayerListViews/CodeGeneratorView.swift,
+				"LayerListViews/Control Views/ChooseColorsView.swift",
+				"LayerListViews/Control Views/ImageLayerControlsView.swift",
+				"LayerListViews/Control Views/SliderView.swift",
+				"LayerListViews/Control Views/TextLayerControlsView.swift",
+				LayerListViews/InformationViews/InformationView.swift,
+				LayerListViews/InformationViews/InstructionsView.swift,
+				LayerListViews/LayerListView.swift,
+				LayerListViews/LayerRowView.swift,
+				Legal/EULAView.swift,
+				Legal/PrivacyPolicyView.swift,
+				Legal/URLWebView.swift,
+				Model/BlendModel.swift,
+				"View Modifiers/BlendModeViewModifier.swift",
+				"View Modifiers/ColorInvertViewModifier.swift",
+				"View Modifiers/CompositingGroupViewModifier.swift",
+				"View Modifiers/GlowViewModifier.swift",
+			);
+			target = 8B2AC1252707666A0039B4F7 /* BlendingModes */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5B5EC02F2FE70554009F95E8 /* BlendingModes */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5B5EC04C2FE70555009F95E8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BlendingModes; sourceTree = "<group>"; };
+		5B898AE52FE75CD200364BF3 /* BlendModes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BlendModes; sourceTree = "<group>"; };
+		5B898AF32FE75CD400364BF3 /* BlendModesTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BlendModesTests; sourceTree = "<group>"; };
+		5B898AFD2FE75CD400364BF3 /* BlendModesUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BlendModesUITests; sourceTree = "<group>"; };
+		5B898B212FE81EDA00364BF3 /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5B898B222FE81EEE00364BF3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B898AE12FE75CD200364BF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B898AED2FE75CD400364BF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B898AF72FE75CD400364BF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B2AC1232707666A0039B4F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,7 +111,11 @@
 		8B2AC11D2707666A0039B4F7 = {
 			isa = PBXGroup;
 			children = (
+				5B898B212FE81EDA00364BF3 /* Shared */,
 				5B5EC02F2FE70554009F95E8 /* BlendingModes */,
+				5B898AE52FE75CD200364BF3 /* BlendModes */,
+				5B898AF32FE75CD400364BF3 /* BlendModesTests */,
+				5B898AFD2FE75CD400364BF3 /* BlendModesUITests */,
 				8B2AC1272707666A0039B4F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				8B2AC1262707666A0039B4F7 /* Blend Modes.app */,
+				5B898AE42FE75CD200364BF3 /* BlendModes.app */,
+				5B898AF02FE75CD400364BF3 /* BlendModesTests.xctest */,
+				5B898AFA2FE75CD400364BF3 /* BlendModesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +134,75 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B898AE32FE75CD200364BF3 /* BlendModes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B898B082FE75CD400364BF3 /* Build configuration list for PBXNativeTarget "BlendModes" */;
+			buildPhases = (
+				5B898AE02FE75CD200364BF3 /* Sources */,
+				5B898AE12FE75CD200364BF3 /* Frameworks */,
+				5B898AE22FE75CD200364BF3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5B898AE52FE75CD200364BF3 /* BlendModes */,
+				5B898B212FE81EDA00364BF3 /* Shared */,
+			);
+			name = BlendModes;
+			packageProductDependencies = (
+			);
+			productName = BlendModes;
+			productReference = 5B898AE42FE75CD200364BF3 /* BlendModes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B898AEF2FE75CD400364BF3 /* BlendModesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B898B092FE75CD400364BF3 /* Build configuration list for PBXNativeTarget "BlendModesTests" */;
+			buildPhases = (
+				5B898AEC2FE75CD400364BF3 /* Sources */,
+				5B898AED2FE75CD400364BF3 /* Frameworks */,
+				5B898AEE2FE75CD400364BF3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B898AF22FE75CD400364BF3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5B898AF32FE75CD400364BF3 /* BlendModesTests */,
+			);
+			name = BlendModesTests;
+			packageProductDependencies = (
+			);
+			productName = BlendModesTests;
+			productReference = 5B898AF02FE75CD400364BF3 /* BlendModesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5B898AF92FE75CD400364BF3 /* BlendModesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B898B0A2FE75CD400364BF3 /* Build configuration list for PBXNativeTarget "BlendModesUITests" */;
+			buildPhases = (
+				5B898AF62FE75CD400364BF3 /* Sources */,
+				5B898AF72FE75CD400364BF3 /* Frameworks */,
+				5B898AF82FE75CD400364BF3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B898AFC2FE75CD400364BF3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5B898AFD2FE75CD400364BF3 /* BlendModesUITests */,
+			);
+			name = BlendModesUITests;
+			packageProductDependencies = (
+			);
+			productName = BlendModesUITests;
+			productReference = 5B898AFA2FE75CD400364BF3 /* BlendModesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		8B2AC1252707666A0039B4F7 /* BlendingModes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B2AC14F2707666D0039B4F7 /* Build configuration list for PBXNativeTarget "BlendingModes" */;
@@ -83,9 +232,20 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					5B898AE32FE75CD200364BF3 = {
+						CreatedOnToolsVersion = 26.5;
+					};
+					5B898AEF2FE75CD400364BF3 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = 5B898AE32FE75CD200364BF3;
+					};
+					5B898AF92FE75CD400364BF3 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = 5B898AE32FE75CD200364BF3;
+					};
 					8B2AC1252707666A0039B4F7 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -107,11 +267,35 @@
 			projectRoot = "";
 			targets = (
 				8B2AC1252707666A0039B4F7 /* BlendingModes */,
+				5B898AE32FE75CD200364BF3 /* BlendModes */,
+				5B898AEF2FE75CD400364BF3 /* BlendModesTests */,
+				5B898AF92FE75CD400364BF3 /* BlendModesUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B898AE22FE75CD200364BF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B898AEE2FE75CD400364BF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B898AF82FE75CD400364BF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B2AC1242707666A0039B4F7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,6 +306,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B898AE02FE75CD200364BF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B898AEC2FE75CD400364BF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B898AF62FE75CD400364BF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B2AC1222707666A0039B4F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,7 +336,207 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5B898AF22FE75CD400364BF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B898AE32FE75CD200364BF3 /* BlendModes */;
+			targetProxy = 5B898AF12FE75CD400364BF3 /* PBXContainerItemProxy */;
+		};
+		5B898AFC2FE75CD400364BF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B898AE32FE75CD200364BF3 /* BlendModes */;
+			targetProxy = 5B898AFB2FE75CD400364BF3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5B898B022FE75CD400364BF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR424649J7;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendModes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5B898B032FE75CD400364BF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR424649J7;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendModes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5B898B042FE75CD400364BF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR424649J7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendModesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlendModes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BlendModes";
+			};
+			name = Debug;
+		};
+		5B898B052FE75CD400364BF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR424649J7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendModesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlendModes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BlendModes";
+			};
+			name = Release;
+		};
+		5B898B062FE75CD400364BF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR424649J7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendModesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = BlendModes;
+			};
+			name = Debug;
+		};
+		5B898B072FE75CD400364BF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR424649J7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendModesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = BlendModes;
+			};
+			name = Release;
+		};
 		8B2AC14D2707666D0039B4F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -255,7 +660,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BlendingModes/Preview Content\"";
 				DEVELOPMENT_TEAM = KR424649J7;
 				ENABLE_PREVIEWS = YES;
@@ -269,12 +674,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendingModes;
 				PRODUCT_NAME = "Blend Modes";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -290,7 +695,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BlendingModes/Preview Content\"";
 				DEVELOPMENT_TEAM = KR424649J7;
 				ENABLE_PREVIEWS = YES;
@@ -304,12 +709,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendingModes;
 				PRODUCT_NAME = "Blend Modes";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -321,6 +726,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B898B082FE75CD400364BF3 /* Build configuration list for PBXNativeTarget "BlendModes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B898B022FE75CD400364BF3 /* Debug */,
+				5B898B032FE75CD400364BF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B898B092FE75CD400364BF3 /* Build configuration list for PBXNativeTarget "BlendModesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B898B042FE75CD400364BF3 /* Debug */,
+				5B898B052FE75CD400364BF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B898B0A2FE75CD400364BF3 /* Build configuration list for PBXNativeTarget "BlendModesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B898B062FE75CD400364BF3 /* Debug */,
+				5B898B072FE75CD400364BF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8B2AC1212707666A0039B4F7 /* Build configuration list for PBXProject "BlendingModes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

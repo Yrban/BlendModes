@@ -6,7 +6,9 @@ struct EULAView: View {
     var body: some View {
         UrlWebView(urlToDisplay: url)
             .navigationTitle("EULA")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
     }
 }
 
