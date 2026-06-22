@@ -114,10 +114,11 @@ struct LayerRowView: View {
                                     .fill(layer.color)
                                     .frame(width: 14, height: 14)
                             case .text:
-                                TextField("Text to blend", text: $layer.text)
+                                // Static Text here (not TextField) avoids a macOS layout constraint loop
+                                Text(layer.text.isEmpty ? "Text" : layer.text)
                                     .font(.headline)
                                     .foregroundStyle(layer.textColor)
-                                    .submitLabel(.done)
+                                    .lineLimit(1)
                             case .images:
                                 Text(layer.type.rawValue)
                                     .font(.headline)
@@ -134,7 +135,7 @@ struct LayerRowView: View {
                         }
                     }
 
-                    Spacer() // pushes the DisclosureGroup chevron to the far right
+                    Spacer()
                 }
             }
         }

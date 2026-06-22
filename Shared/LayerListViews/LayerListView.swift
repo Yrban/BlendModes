@@ -9,7 +9,7 @@ struct LayerListView: View {
         @Bindable var model = blendModel
 
         VStack(spacing: 0) {
-            // Pinned header — always visible at top regardless of detent or scroll position
+            // Pinned header
             HStack(spacing: 12) {
                 Text("Layers")
                     .font(.headline)
@@ -72,7 +72,6 @@ struct LayerListView: View {
                     }
                     .onMove { from, to in
                         withAnimation { model.layers.move(fromOffsets: from, toOffset: to) }
-                        // Ensure background layer stays last after any move
                         if let bgIdx = model.layers.firstIndex(where: { $0.type == .background }),
                            bgIdx != model.layers.count - 1 {
                             let bg = model.layers.remove(at: bgIdx)
@@ -83,7 +82,6 @@ struct LayerListView: View {
                         model.layers.remove(atOffsets: offsets)
                     }
                 }
-
             }
             #if os(iOS)
             .listStyle(.insetGrouped)
@@ -126,7 +124,6 @@ struct LayerListView: View {
 
     private var availableTypes: [DemoMode] {
         let hasBG = blendModel.layers.contains { $0.type == .background }
-        // Only non-CG and non-background layers count toward the CG minimum
         let contentCount = blendModel.layers.filter { $0.type != .compositingGroup && $0.type != .background }.count
         return DemoMode.allCases.filter { type in
             switch type {
@@ -140,12 +137,10 @@ struct LayerListView: View {
     private func insertLayer(type: DemoMode) {
         switch type {
         case .background:
-            // Always insert at end (only reachable when no background layer exists)
             var bg = Layer(type: .background)
             bg.color = .gray
             blendModel.layers.append(bg)
         case .compositingGroup:
-            // Must land after the first 2 non-CG, non-background layers
             var seen = 0
             var insertIndex = max(0, blendModel.layers.count - (blendModel.layers.last?.type == .background ? 1 : 0))
             for (i, layer) in blendModel.layers.enumerated() {

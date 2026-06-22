@@ -4,6 +4,10 @@ struct TextLayerControlsView: View {
     @Binding var layer: Layer
 
     var body: some View {
+        TextField("Text to blend", text: $layer.text)
+            .font(.body)
+            .submitLabel(.done)
+
         ColorPicker("Text Color", selection: $layer.textColor, supportsOpacity: false)
 
         SliderView(value: $layer.fontSize, title: "Font Size", range: 20...200, displayText: "\(Int(layer.fontSize))pt")

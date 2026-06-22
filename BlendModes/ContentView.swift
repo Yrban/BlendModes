@@ -2,14 +2,18 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(BlendModel.self) private var blendModel
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
-        NavigationSplitView {
+        HSplitView {
             LayerListView()
-                .navigationSplitViewColumnWidth(min: 300, ideal: 360)
-        } detail: {
+                .frame(minWidth: 300, idealWidth: 360, maxWidth: 500)
             BlendGroupView()
+                .frame(minWidth: 400)
                 .ignoresSafeArea()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .showBlendModesHelp)) { _ in
+            openWindow(id: "blend-modes-help")
         }
     }
 }
