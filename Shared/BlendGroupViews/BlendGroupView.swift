@@ -54,6 +54,7 @@ struct BlendGroupView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .overlay(alignment: .top) {
+            #if os(iOS)
             HStack {
                 Spacer()
                 HStack {
@@ -67,6 +68,7 @@ struct BlendGroupView: View {
                 .padding()
                 Spacer()
             }
+            #endif
         }
     }
     
