@@ -34,6 +34,41 @@ final class BlendModesUITests: XCTestCase {
     }
 
     @MainActor
+    func testDemoPresetCirclesSetColorBlendMode() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        Thread.sleep(forTimeInterval: 5)
+
+        // Load the Demo preset via the Add Layer menu
+        app.menuButtons["Add Layer"].click()
+        app.menuItems["Demo"].click()
+
+        // Demo has 3 circle layers. On macOS, List renders as NSOutlineView.
+        // The first 3 DisclosureTriangles (indices 0–2) correspond to the 3 circle layers.
+        let outline = app.outlines.firstMatch
+        XCTAssertTrue(outline.waitForExistence(timeout: 0.5))
+
+        for index in 0..<3 {
+            let triangle = outline.disclosureTriangles.element(boundBy: index)
+            XCTAssertTrue(triangle.waitForExistence(timeout: 0.5))
+            triangle.click() // expand
+
+            // The Picker(.menu) on macOS renders as a PopUpButton labeled with the current
+            // selection, not the picker's "Blend Mode" label. Use firstMatch since only one
+            // row is expanded at a time.
+            let picker = outline.popUpButtons.firstMatch
+            XCTAssertTrue(picker.waitForExistence(timeout: 0.5))
+            picker.click()
+            app.menuItems[".color"].click()
+
+            triangle.click() // collapse before moving to the next row
+        }
+
+        Thread.sleep(forTimeInterval: 1)
+    }
+
+    @MainActor
     func testLaunchPerformance() throws {
         // This measures how long it takes to launch your application.
         measure(metrics: [XCTApplicationLaunchMetric()]) {

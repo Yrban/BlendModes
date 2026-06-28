@@ -45,7 +45,7 @@ struct LayerRowView: View {
             DisclosureGroup(isExpanded: $isExpanded) {
                 VStack(alignment: .leading, spacing: 12) {
                     // Blend mode picker — grouped by category
-                    Picker("Blend Mode", selection: $layer.blendMode) {
+                    Picker("Blend Modes", selection: $layer.blendMode) {
                         ForEach(blendModeGroups, id: \.title) { group in
                             Section(group.title) {
                                 ForEach(group.modes, id: \.self) { mode in
@@ -128,6 +128,7 @@ struct LayerRowView: View {
                     Spacer()
                 }
             }
+            .accessibilityIdentifier(layer.type.rawValue)
         }
     }
 }

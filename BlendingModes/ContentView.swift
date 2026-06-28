@@ -37,6 +37,8 @@ struct ContentView: View {
         } else {
             NavigationSplitView(columnVisibility: $columnVisibility) {
                 LayerListView()
+                    .background(Color(.systemGroupedBackground))
+                    .scrollContentBackground(.hidden)
             } detail: {
                 BlendGroupView()
             }

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
+		5B0A320B2FF1AFB100110225 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B2AC11E2707666A0039B4F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B2AC1252707666A0039B4F7;
+			remoteInfo = BlendingModes;
+		};
 		5B898AF12FE75CD400364BF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8B2AC11E2707666A0039B4F7 /* Project object */;
@@ -24,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B0A32052FF1AFB100110225 /* BlendingModesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlendingModesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B898AE42FE75CD200364BF3 /* BlendModes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlendModes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B898AF02FE75CD400364BF3 /* BlendModesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlendModesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B898AFA2FE75CD400364BF3 /* BlendModesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlendModesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +77,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		5B0A32062FF1AFB100110225 /* BlendingModesUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BlendingModesUITests; sourceTree = "<group>"; };
 		5B5EC02F2FE70554009F95E8 /* BlendingModes */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5B5EC04C2FE70555009F95E8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BlendingModes; sourceTree = "<group>"; };
 		5B898AE52FE75CD200364BF3 /* BlendModes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BlendModes; sourceTree = "<group>"; };
 		5B898AF32FE75CD400364BF3 /* BlendModesTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BlendModesTests; sourceTree = "<group>"; };
@@ -77,6 +86,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B0A32022FF1AFB100110225 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B898AE12FE75CD200364BF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,6 +132,7 @@
 				5B898AE52FE75CD200364BF3 /* BlendModes */,
 				5B898AF32FE75CD400364BF3 /* BlendModesTests */,
 				5B898AFD2FE75CD400364BF3 /* BlendModesUITests */,
+				5B0A32062FF1AFB100110225 /* BlendingModesUITests */,
 				8B2AC1272707666A0039B4F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,6 +144,7 @@
 				5B898AE42FE75CD200364BF3 /* BlendModes.app */,
 				5B898AF02FE75CD400364BF3 /* BlendModesTests.xctest */,
 				5B898AFA2FE75CD400364BF3 /* BlendModesUITests.xctest */,
+				5B0A32052FF1AFB100110225 /* BlendingModesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +152,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B0A32042FF1AFB100110225 /* BlendingModesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B0A320D2FF1AFB100110225 /* Build configuration list for PBXNativeTarget "BlendingModesUITests" */;
+			buildPhases = (
+				5B0A32012FF1AFB100110225 /* Sources */,
+				5B0A32022FF1AFB100110225 /* Frameworks */,
+				5B0A32032FF1AFB100110225 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B0A320C2FF1AFB100110225 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5B0A32062FF1AFB100110225 /* BlendingModesUITests */,
+			);
+			name = BlendingModesUITests;
+			packageProductDependencies = (
+			);
+			productName = BlendingModesUITests;
+			productReference = 5B0A32052FF1AFB100110225 /* BlendingModesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		5B898AE32FE75CD200364BF3 /* BlendModes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B898B082FE75CD400364BF3 /* Build configuration list for PBXNativeTarget "BlendModes" */;
@@ -232,9 +273,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2650;
+				LastSwiftUpdateCheck = 2660;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					5B0A32042FF1AFB100110225 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 8B2AC1252707666A0039B4F7;
+					};
 					5B898AE32FE75CD200364BF3 = {
 						CreatedOnToolsVersion = 26.5;
 					};
@@ -270,11 +315,19 @@
 				5B898AE32FE75CD200364BF3 /* BlendModes */,
 				5B898AEF2FE75CD400364BF3 /* BlendModesTests */,
 				5B898AF92FE75CD400364BF3 /* BlendModesUITests */,
+				5B0A32042FF1AFB100110225 /* BlendingModesUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B0A32032FF1AFB100110225 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B898AE22FE75CD200364BF3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -306,6 +359,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B0A32012FF1AFB100110225 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B898AE02FE75CD200364BF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,6 +397,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5B0A320C2FF1AFB100110225 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B2AC1252707666A0039B4F7 /* BlendingModes */;
+			targetProxy = 5B0A320B2FF1AFB100110225 /* PBXContainerItemProxy */;
+		};
 		5B898AF22FE75CD400364BF3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5B898AE32FE75CD200364BF3 /* BlendModes */;
@@ -350,6 +415,59 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5B0A320E2FF1AFB100110225 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR424649J7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendingModesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BlendingModes;
+			};
+			name = Debug;
+		};
+		5B0A320F2FF1AFB100110225 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR424649J7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alelinapps.BlendingModesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BlendingModes;
+			};
+			name = Release;
+		};
 		5B898B022FE75CD400364BF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -726,6 +844,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B0A320D2FF1AFB100110225 /* Build configuration list for PBXNativeTarget "BlendingModesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B0A320E2FF1AFB100110225 /* Debug */,
+				5B0A320F2FF1AFB100110225 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5B898B082FE75CD400364BF3 /* Build configuration list for PBXNativeTarget "BlendModes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -46,6 +46,7 @@ struct LayerListView: View {
                     Image(systemName: "plus.circle.fill")
                         .font(.title3)
                 }
+                .accessibilityLabel("Add Layer")
                 Button { showInfo = true } label: {
                     Image(systemName: "info.circle")
                         .font(.title3)
@@ -168,38 +169,53 @@ private enum Preset: String, CaseIterable {
     case screenOnBlack   = "Screen on Black"
     case overlay         = "Overlay"
     case difference      = "Difference"
+    case demo            = "Demo"
 
     var systemImage: String {
         switch self {
-        case .multiplyOnWhite: "circle.lefthalf.filled"
-        case .screenOnBlack:   "circle.righthalf.filled"
-        case .overlay:         "circle.fill"
-        case .difference:      "plus.circle"
+            case .multiplyOnWhite: "circle.lefthalf.filled"
+            case .screenOnBlack:   "circle.righthalf.filled"
+            case .overlay:         "circle.fill"
+            case .difference:      "plus.circle"
+            case .demo:            "play.circle.fill"
         }
     }
 
     var layers: [Layer] {
         switch self {
-        case .multiplyOnWhite:
-            var c1 = Layer(type: .circles); c1.color = .blue;   c1.xOffset = -50
-            var c2 = Layer(type: .circles); c2.color = .red;    c2.blendMode = .multiply; c2.xOffset = 50
-            var bg = Layer(type: .background); bg.color = .white
-            return [c2, c1, bg]
-        case .screenOnBlack:
-            var c1 = Layer(type: .circles); c1.color = .blue;   c1.xOffset = -50
-            var c2 = Layer(type: .circles); c2.color = .red;    c2.blendMode = .screen;   c2.xOffset = 50
-            var bg = Layer(type: .background); bg.color = .black
-            return [c2, c1, bg]
-        case .overlay:
-            var c1 = Layer(type: .circles); c1.color = .orange; c1.xOffset = -50
-            var c2 = Layer(type: .circles); c2.color = .purple; c2.blendMode = .overlay;  c2.xOffset = 50
-            var bg = Layer(type: .background); bg.color = Color(white: 0.5)
-            return [c2, c1, bg]
-        case .difference:
-            var c1 = Layer(type: .circles); c1.color = .cyan;   c1.xOffset = -50
-            var c2 = Layer(type: .circles); c2.color = .yellow; c2.blendMode = .difference; c2.xOffset = 50
-            var bg = Layer(type: .background); bg.color = Color(white: 0.15)
-            return [c2, c1, bg]
+            case .multiplyOnWhite:
+                var c1 = Layer(type: .circles); c1.color = .blue;   c1.xOffset = -50
+                var c2 = Layer(type: .circles); c2.color = .red;    c2.blendMode = .multiply; c2.xOffset = 50
+                var bg = Layer(type: .background); bg.color = .white
+                return [c2, c1, bg]
+            case .screenOnBlack:
+                var c1 = Layer(type: .circles); c1.color = .blue;   c1.xOffset = -50
+                var c2 = Layer(type: .circles); c2.color = .red;    c2.blendMode = .screen;   c2.xOffset = 50
+                var bg = Layer(type: .background); bg.color = .black
+                return [c2, c1, bg]
+            case .overlay:
+                var c1 = Layer(type: .circles); c1.color = .orange; c1.xOffset = -50
+                var c2 = Layer(type: .circles); c2.color = .purple; c2.blendMode = .overlay;  c2.xOffset = 50
+                var bg = Layer(type: .background); bg.color = Color(white: 0.5)
+                return [c2, c1, bg]
+            case .difference:
+                var c1 = Layer(type: .circles); c1.color = .cyan;   c1.xOffset = -50
+                var c2 = Layer(type: .circles); c2.color = .yellow; c2.blendMode = .difference; c2.xOffset = 50
+                var bg = Layer(type: .background); bg.color = Color(white: 0.15)
+                return [c2, c1, bg]
+            case .demo:
+                #if os(macOS)
+                var c1 = Layer(type: .circles);    c1.color = .blue;                        c1.yOffset = 60
+                var c2 = Layer(type: .circles);    c2.color = .green;   c2.xOffset = 80 ;   c2.yOffset = -60
+                var c3 = Layer(type: .circles);    c3.color = .red;     c3.xOffset = -80 ;  c3.yOffset = -60
+                #elseif os(iOS)
+                var c1 = Layer(type: .circles);    c1.color = .blue;                        c1.yOffset = 15
+                var c2 = Layer(type: .circles);    c2.color = .green;   c2.xOffset = 20 ;   c2.yOffset = -15
+                var c3 = Layer(type: .circles);    c3.color = .red;     c3.xOffset = -20 ;  c3.yOffset = -15
+                #endif
+                var txt = Layer(type: .text);      txt.color = .purple; txt.text = "Blend Mode"
+                var bg = Layer(type: .background); bg.color = .yellow
+                return [c3, c2, c1, txt, bg]
         }
     }
 }
