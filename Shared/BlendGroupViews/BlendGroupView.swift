@@ -20,7 +20,7 @@ struct BlendGroupView: View {
                 .onGeometryChange(for: CGFloat.self) {
                     min($0.size.width, $0.size.height)
                 } action: { newValue in
-                    minDim = newValue
+                    minDim = max(0, newValue)
                 }
             
             
