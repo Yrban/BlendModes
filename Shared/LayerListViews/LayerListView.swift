@@ -62,6 +62,13 @@ struct LayerListView: View {
                         let layerId = $layer.wrappedValue.id
                         LayerRowView(layer: $layer)
                             .moveDisabled($layer.wrappedValue.type == .background)
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    blendModel.layers.removeAll { $0.id == layerId }
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
                                     blendModel.layers.removeAll { $0.id == layerId }
