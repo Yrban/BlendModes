@@ -45,26 +45,16 @@ struct LayerRowView: View {
             DisclosureGroup(isExpanded: $isExpanded) {
                 VStack(alignment: .leading, spacing: 12) {
                     // Blend mode picker — grouped by category
-                    Menu {
+                    Picker("Blend Mode", selection: $layer.blendMode) {
                         ForEach(blendModeGroups, id: \.title) { group in
                             Section(group.title) {
                                 ForEach(group.modes, id: \.self) { mode in
-                                    Button(mode.description) { layer.blendMode = mode }
+                                    Text(mode.description).tag(mode)
                                 }
                             }
                         }
-                    } label: {
-                        HStack {
-                            Text("Blend Mode")
-                                .foregroundStyle(.primary)
-                            Spacer()
-                            Text(layer.blendMode.description)
-                                .foregroundStyle(.secondary)
-                            Image(systemName: "chevron.up.chevron.down")
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                        }
                     }
+                    .pickerStyle(.menu)
                     .foregroundStyle(.primary)
 
                     Divider()
