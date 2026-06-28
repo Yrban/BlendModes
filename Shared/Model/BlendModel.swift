@@ -46,8 +46,9 @@ class BlendModel {
 
     func codeSnippet() -> String {
         var lines = ["ZStack {"]
-        let bgColor = layers.last(where: { $0.type == .background })?.color ?? .gray
-        lines.append("    \(colorLiteral(bgColor)) // background")
+        if let bgColor = layers.last(where: { $0.type == .background })?.color {
+            lines.append("    \(colorLiteral(bgColor)) // background" + newLine)
+        }
 
         // Split at compositingGroup layers; each group above a CG boundary gets .compositingGroup()
         // Exclude background layers from content segments
@@ -62,19 +63,23 @@ class BlendModel {
         }
         if !current.isEmpty { segments.append((current, false)) }
 
+        var blocks: [[String]] = []
         for segment in segments.reversed() {
             if segment.needsCG {
-                lines.append("    ZStack {")
-                for layer in segment.layers.reversed() { lines += layerCode(layer, indent: "        ") }
-                lines.append("    }")
-                lines.append("    .compositingGroup()")
+                var block = ["    ZStack {"]
+                for layer in segment.layers.reversed() { block += layerCode(layer, indent: "        ") }
+                block += ["    }", "    .compositingGroup()"]
+                blocks.append(block)
             } else {
-                for layer in segment.layers.reversed() { lines += layerCode(layer, indent: "    ") }
+                for layer in segment.layers.reversed() {
+                    blocks.append(layerCode(layer, indent: "    "))
+                }
             }
         }
+        lines += blocks.joined(separator: [""])
 
         lines.append("}")
-        return lines.joined(separator: "\n")
+        return lines.joined(separator: newLine)
     }
 
     // MARK: - Private helpers
@@ -91,31 +96,28 @@ class BlendModel {
 
     private func circlesCode(_ layer: Layer, indent: String) -> [String] {
         var lines: [String] = []
-        lines.append("\(indent)// \(layer.type.rawValue)")
         lines.append("\(indent)Circle()")
         lines.append("\(indent)    .fill(\(colorLiteral(layer.color)))")
-        lines += modifiers(layer, indent: indent)
+        lines += modifiers(layer, indent: indent + "    ")
         return lines
     }
 
     private func imagesCode(_ layer: Layer, indent: String) -> [String] {
         var lines: [String] = []
-        lines.append("\(indent)// \(layer.type.rawValue)")
         lines.append("\(indent)Image(\"myImage\") // replace with your asset name")
         lines.append("\(indent)    .resizable()")
         lines.append("\(indent)    .scaledToFit()")
-        lines += modifiers(layer, indent: indent)
+        lines += modifiers(layer, indent: indent + "    ")
         return lines
     }
 
     private func textCode(_ layer: Layer, indent: String) -> [String] {
         let t = layer.text.isEmpty ? "Blend" : layer.text
         var lines: [String] = []
-        lines.append("\(indent)// \(layer.type.rawValue)")
         lines.append("\(indent)Text(\"\(t)\")")
         lines.append("\(indent)    .font(.system(size: \(Int(layer.fontSize))))")
         lines.append("\(indent)    .foregroundStyle(\(colorLiteral(layer.textColor)))")
-        lines += modifiers(layer, indent: indent)
+        lines += modifiers(layer, indent: indent + "    ")
         return lines
     }
 
@@ -132,5 +134,7 @@ class BlendModel {
         return "Color(red: \(fmt(c.r)), green: \(fmt(c.g)), blue: \(fmt(c.b)))"
     }
 
-    private func fmt(_ v: Double) -> String { String(format: "%.2f", v) }
+    private let newLine: String = "\n"
+    
+    private func fmt(_ v: Double) -> String { v.formatted(.number.precision(.fractionLength(2))) }
 }
