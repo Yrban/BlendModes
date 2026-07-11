@@ -23,13 +23,7 @@ struct InformationView: View {
                 NavigationLink {
                     InstructionsView()
                 } label: {
-                    HStack {
-                        Label("How to Use", systemImage: "book.pages.fill")
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(.secondary)
-                    }
+                    Label("How to Use", systemImage: "book.pages.fill")
                 }
                 .padding(.vertical)
                 

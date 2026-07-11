@@ -27,8 +27,7 @@ struct BlendGroupView: View {
             // Render segments bottom-to-top; each segment above a CG boundary gets .compositingGroup()
             ForEach(Array(segments.enumerated()), id: \.offset) { _, segment in
                 ZStack {
-                    ForEach(segment.indices.reversed(), id: \.self) { index in
-                        let layer = blendModel.layers[index]
+                    ForEach(segment.layers.reversed(), id: \.id) { layer in
                         canvasView(layer: layer, minDim: minDim)
                             .offset(x: layer.xOffset, y: layer.yOffset)
                             .gesture(
@@ -40,8 +39,10 @@ struct BlendGroupView: View {
                                             )
                                         }
                                         let start = dragStartOffsets[layer.id]!
-                                        blendModel.layers[index].xOffset = start.width + value.translation.width
-                                        blendModel.layers[index].yOffset = start.height + value.translation.height
+                                        if let idx = blendModel.layers.firstIndex(where: { $0.id == layer.id }) {
+                                            blendModel.layers[idx].xOffset = start.width + value.translation.width
+                                            blendModel.layers[idx].yOffset = start.height + value.translation.height
+                                        }
                                     }
                                     .onEnded { _ in
                                         dragStartOffsets[layer.id] = nil
@@ -75,30 +76,30 @@ struct BlendGroupView: View {
     // MARK: - Segment building
     
     private struct LayerSegment {
-        let indices: [Int]
+        let layers: [Layer]
         let needsCompositingGroup: Bool
     }
     
     /// Splits layers (top→bottom) at each compositingGroup layer.
-    /// Layers above a CG boundary are grouped and will receive .compositingGroup().
+    /// Stores Layer values (not indices) so stale indices can't crash during preset switches.
     private func buildSegments() -> [LayerSegment] {
         var segments: [LayerSegment] = []
-        var current: [Int] = []
-        for index in blendModel.layers.indices {
-            let type = blendModel.layers[index].type
-            if type == .background {
-                // Background rendered separately as full-bleed canvas fill — skip here
-            } else if type == .compositingGroup {
+        var current: [Layer] = []
+        for layer in blendModel.layers {
+            switch layer.type {
+            case .background:
+                break
+            case .compositingGroup:
                 if !current.isEmpty {
-                    segments.append(LayerSegment(indices: current, needsCompositingGroup: true))
+                    segments.append(LayerSegment(layers: current, needsCompositingGroup: true))
                     current = []
                 }
-            } else {
-                current.append(index)
+            default:
+                current.append(layer)
             }
         }
         if !current.isEmpty {
-            segments.append(LayerSegment(indices: current, needsCompositingGroup: false))
+            segments.append(LayerSegment(layers: current, needsCompositingGroup: false))
         }
         return segments
     }

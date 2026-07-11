@@ -36,7 +36,7 @@ struct LayerListView: View {
                         }
                     }
                     Section("Presets") {
-                        ForEach(Preset.allCases, id: \.self) { preset in
+                        ForEach(visiblePresets, id: \.self) { preset in
                             Button { blendModel.layers = preset.layers } label: {
                                 Label(preset.rawValue, systemImage: preset.systemImage)
                             }
@@ -130,6 +130,14 @@ struct LayerListView: View {
         }
     }
 
+    private var visiblePresets: [Preset] {
+        #if DEBUG
+        return Preset.allCases
+        #else
+        return Preset.allCases.filter { $0 != .demo }
+        #endif
+    }
+
     private var availableTypes: [DemoMode] {
         let hasBG = blendModel.layers.contains { $0.type == .background }
         let contentCount = blendModel.layers.filter { $0.type != .compositingGroup && $0.type != .background }.count
@@ -205,12 +213,12 @@ private enum Preset: String, CaseIterable {
                 return [c2, c1, bg]
             case .demo:
                 #if os(macOS)
-                var c1 = Layer(type: .circles);    c1.color = .blue;                        c1.yOffset = 60
-                var c2 = Layer(type: .circles);    c2.color = .green;   c2.xOffset = 80 ;   c2.yOffset = -60
+                var c1 = Layer(type: .circles);    c1.color = .blue;  c1.blendMode = .color; c1.yOffset = 60
+                var c2 = Layer(type: .circles);    c2.color = .green; c2.blendMode = .color; c2.xOffset = 80 ;   c2.yOffset = -60
                 var c3 = Layer(type: .circles);    c3.color = .red;     c3.xOffset = -80 ;  c3.yOffset = -60
                 #elseif os(iOS)
-                var c1 = Layer(type: .circles);    c1.color = .blue;                        c1.yOffset = 15
-                var c2 = Layer(type: .circles);    c2.color = .green;   c2.xOffset = 20 ;   c2.yOffset = -15
+                var c1 = Layer(type: .circles);    c1.color = .blue;  c1.blendMode = .color; c1.yOffset = 15
+                var c2 = Layer(type: .circles);    c2.color = .green; c2.blendMode = .color; c2.xOffset = 20 ;   c2.yOffset = -15
                 var c3 = Layer(type: .circles);    c3.color = .red;     c3.xOffset = -20 ;  c3.yOffset = -15
                 #endif
                 var txt = Layer(type: .text);      txt.color = .purple; txt.text = "Blend Mode"

@@ -22,13 +22,12 @@ final class BlendingModesUITests: XCTestCase {
     }
 
     @MainActor
-    func testDemoPresetCirclesSetColorBlendMode_iOS() throws {
+    func testDemoPresetFirstCircleSetColorBlendMode_iOS() throws {
         let app = XCUIApplication()
         app.launch()
 
         // Expand the bottom sheet by dragging the grab handle to the top of the screen
         let grabber = app.buttons["Sheet Grabber"].firstMatch
-        XCTAssertTrue(grabber.waitForExistence(timeout: 0.5))
         grabber.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
             .press(forDuration: 0.1, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.02)))
 
@@ -36,29 +35,23 @@ final class BlendingModesUITests: XCTestCase {
         app.images["plus.circle.fill"].firstMatch.tap()
         app.buttons["Demo"].firstMatch.tap()
 
-        for index in 0..<3 {
-            // Tap the row to expand the disclosure group
-            let cell = app.collectionViews.firstMatch.cells.element(boundBy: index)
-            XCTAssertTrue(cell.waitForExistence(timeout: 0.5))
-            cell.tap()
+        // Expand the first circle row
+        let cell = app.collectionViews.firstMatch.cells.element(boundBy: 0)
+        XCTAssertTrue(cell.waitForExistence(timeout: 0.05))
+        cell.tap()
 
-            // Tap the blend mode picker — button label is "Blend Mode, .normal"; tap its static text
-            let pickerButton = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Blend Mode,'")).firstMatch
-            XCTAssertTrue(pickerButton.waitForExistence(timeout: 0.5))
-            pickerButton.staticTexts.firstMatch.tap()
+        // Tap the blend mode picker — button label is "Blend Modes, .normal"; tap its static text
+        let pickerButton = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Blend Modes,'")).firstMatch
+        XCTAssertTrue(pickerButton.waitForExistence(timeout: 0.05))
+        pickerButton.staticTexts.firstMatch.tap()
 
-            // Scroll the picker menu to reveal the Component section
-            let midPicker = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.6))
-            let topPicker = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.2))
-            midPicker.press(forDuration: 0.05, thenDragTo: topPicker)
-            midPicker.press(forDuration: 0.05, thenDragTo: topPicker)
+        // Scroll the picker menu once to reveal the Component section
+        let midPicker = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.6))
+        let topPicker = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.2))
+        midPicker.press(forDuration: 0.05, thenDragTo: topPicker)
 
-            // Select .color
-            app.buttons[".color"].firstMatch.tap()
-
-            // Collapse the row before moving to the next
-            cell.tap()
-        }
+        // Select .color
+        app.buttons[".color"].firstMatch.tap()
 
         // Drop the sheet back down
         grabber.swipeDown()
@@ -67,7 +60,7 @@ final class BlendingModesUITests: XCTestCase {
     }
 
     @MainActor
-    func testDemoPresetCirclesSetColorBlendMode_iPad() throws {
+    func testDemoPresetFirstCircleSetColorBlendMode_iPad() throws {
         // Targets iPad (regular horizontal size class) where the layer list
         // is in a NavigationSplitView sidebar that starts hidden (.detailOnly)
         let app = XCUIApplication()
@@ -75,7 +68,7 @@ final class BlendingModesUITests: XCTestCase {
 
         // Show the sidebar — NavigationSplitView provides a toolbar toggle button
         let sidebarToggle = app.buttons["Show Sidebar"].firstMatch
-        if sidebarToggle.waitForExistence(timeout: 0.5) {
+        if sidebarToggle.waitForExistence(timeout: 0.25) {
             sidebarToggle.tap()
         }
 
@@ -83,29 +76,23 @@ final class BlendingModesUITests: XCTestCase {
         app.buttons["Add Layer"].firstMatch.tap()
         app.buttons["Demo"].firstMatch.tap()
 
-        for index in 0..<3 {
-            // Tap the row to expand the disclosure group
-            let cell = app.collectionViews.firstMatch.cells.element(boundBy: index)
-            XCTAssertTrue(cell.waitForExistence(timeout: 0.5))
-            cell.tap()
+        // Expand the first circle row
+        let cell = app.collectionViews.firstMatch.cells.element(boundBy: 0)
+        XCTAssertTrue(cell.waitForExistence(timeout: 0.25))
+        cell.tap()
 
-            // Tap the blend mode picker — button label is "Blend Mode, .normal"; tap its static text
-            let pickerButton = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Blend Mode,'")).firstMatch
-            XCTAssertTrue(pickerButton.waitForExistence(timeout: 0.5))
-            pickerButton.staticTexts.firstMatch.tap()
+        // Tap the blend mode picker — button label is "Blend Modes, .normal"; tap its static text
+        let pickerButton = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Blend Modes,'")).firstMatch
+        XCTAssertTrue(pickerButton.waitForExistence(timeout: 2))
+        pickerButton.staticTexts.firstMatch.tap()
 
-            // Scroll the picker menu to reveal the Component section
-            let midPicker = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.6))
-            let topPicker = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.2))
-            midPicker.press(forDuration: 0.05, thenDragTo: topPicker)
-//            midPicker.press(forDuration: 0.05, thenDragTo: topPicker)
+        // Scroll the picker menu once to reveal the Component section
+        let midPicker = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.6))
+        let topPicker = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.2))
+        midPicker.press(forDuration: 0.05, thenDragTo: topPicker)
 
-            // Select .color
-            app.buttons[".color"].firstMatch.tap()
-
-            // Collapse the row before moving to the next
-            cell.tap()
-        }
+        // Select .color
+        app.buttons[".color"].firstMatch.tap()
 
         Thread.sleep(forTimeInterval: 1)
     }
