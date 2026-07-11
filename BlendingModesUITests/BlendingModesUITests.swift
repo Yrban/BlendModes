@@ -68,7 +68,7 @@ final class BlendingModesUITests: XCTestCase {
 
         // Show the sidebar — NavigationSplitView provides a toolbar toggle button
         let sidebarToggle = app.buttons["Show Sidebar"].firstMatch
-        if sidebarToggle.waitForExistence(timeout: 0.25) {
+        if sidebarToggle.waitForExistence(timeout: 0.05) {
             sidebarToggle.tap()
         }
 
@@ -78,12 +78,12 @@ final class BlendingModesUITests: XCTestCase {
 
         // Expand the first circle row
         let cell = app.collectionViews.firstMatch.cells.element(boundBy: 0)
-        XCTAssertTrue(cell.waitForExistence(timeout: 0.25))
+        XCTAssertTrue(cell.waitForExistence(timeout: 0.05))
         cell.tap()
 
         // Tap the blend mode picker — button label is "Blend Modes, .normal"; tap its static text
         let pickerButton = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Blend Modes,'")).firstMatch
-        XCTAssertTrue(pickerButton.waitForExistence(timeout: 2))
+        XCTAssertTrue(pickerButton.waitForExistence(timeout: 0.05))
         pickerButton.staticTexts.firstMatch.tap()
 
         // Scroll the picker menu once to reveal the Component section
@@ -93,6 +93,12 @@ final class BlendingModesUITests: XCTestCase {
 
         // Select .color
         app.buttons[".color"].firstMatch.tap()
+
+        // Close the sidebar
+        let hideSidebar = app.buttons["Hide Sidebar"].firstMatch
+        if hideSidebar.waitForExistence(timeout: 0.05) {
+            hideSidebar.tap()
+        }
 
         Thread.sleep(forTimeInterval: 1)
     }
